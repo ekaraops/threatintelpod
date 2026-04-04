@@ -1,0 +1,42 @@
+baseURL = "https://YOUR_GITHUB_USERNAME.github.io/threatintelpod/"
+languageCode = "en-us"
+title = "ThreatIntelPod"
+# No external theme - all layouts are in layouts/
+
+[params]
+  description = "AI-powered cybersecurity podcast summaries for CISOs and security leaders"
+  tagline = "Stay informed. Stay secure."
+  author = "ThreatIntelPod"
+  ogImage = "/images/og-default.png"
+
+[taxonomies]
+  channel = "channels"
+  category = "categories"
+  tag = "tags"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
+[menu]
+  [[menu.main]]
+    name = "Episodes"
+    url = "/episodes/"
+    weight = 1
+  [[menu.main]]
+    name = "Channels"
+    url = "/channels/"
+    weight = 2
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 3
