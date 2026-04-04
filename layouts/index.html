@@ -1,6 +1,6 @@
 {{ define "main" }}
 <section class="hero">
-  <div class="container">
+  <div class="container hero-layout">
     <div class="hero-content">
       <h1 class="hero-title">Cybersecurity Intelligence,<br><span class="accent">Summarized.</span></h1>
       <p class="hero-subtitle">AI-powered summaries of the top cybersecurity podcasts. Built for CISOs, SOC teams, and security leaders who need signal, not noise.</p>
@@ -11,6 +11,9 @@
           RSS Feed
         </a>
       </div>
+    </div>
+    <div class="hero-visual">
+      <img src="{{ .Site.BaseURL }}images/hero-visual.svg" alt="Cybersecurity threat intelligence network">
     </div>
     <div class="hero-stats">
       {{ $episodes := where .Site.RegularPages "Section" "episodes" }}

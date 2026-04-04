@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00b4d8" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#00ff88"/>
+      <stop offset="100%" stop-color="#00b4d8"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00b4d8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00b4d8" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur1" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <filter id="blur2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+  </defs>
+
+  <!-- Background glow orbs -->
+  <ellipse cx="300" cy="250" rx="250" ry="200" fill="url(#glow1)" filter="url(#blur2)"/>
+  <ellipse cx="200" cy="200" rx="120" ry="120" fill="url(#glow2)" filter="url(#blur2)"/>
+
+  <!-- 3D Grid perspective floor -->
+  <g opacity="0.15" stroke="#00ff88" stroke-width="0.5">
+    <!-- Horizontal lines -->
+    <line x1="50" y1="350" x2="550" y2="350"/>
+    <line x1="80" y1="370" x2="520" y2="370"/>
+    <line x1="110" y1="390" x2="490" y2="390"/>
+    <line x1="140" y1="410" x2="460" y2="410"/>
+    <line x1="170" y1="430" x2="430" y2="430"/>
+    <!-- Vertical converging lines -->
+    <line x1="300" y1="250" x2="50" y2="450"/>
+    <line x1="300" y1="250" x2="150" y2="450"/>
+    <line x1="300" y1="250" x2="250" y2="450"/>
+    <line x1="300" y1="250" x2="350" y2="450"/>
+    <line x1="300" y1="250" x2="450" y2="450"/>
+    <line x1="300" y1="250" x2="550" y2="450"/>
+  </g>
+
+  <!-- Central 3D shield -->
+  <g transform="translate(300,200)">
+    <!-- Shadow -->
+    <ellipse cx="5" cy="130" rx="70" ry="15" fill="#000" opacity="0.3" filter="url(#blur1)"/>
+
+    <!-- Shield back face (3D depth) -->
+    <path d="M8 -90 L75 -55 L75 20 C75 65 45 100 8 118 L8 -90Z" fill="#0a2a1a" stroke="#00ff88" stroke-width="0.5" opacity="0.5"/>
+
+    <!-- Shield front face -->
+    <path d="M0 -95 L-72 -58 L-72 18 C-72 65 -40 102 0 120 C40 102 72 65 72 18 L72 -58 Z"
+      fill="#0d1f2d" stroke="url(#g3)" stroke-width="2"/>
+
+    <!-- Shield inner glow -->
+    <path d="M0 -75 L-55 -45 L-55 14 C-55 50 -30 80 0 95 C30 80 55 50 55 14 L55 -45 Z"
+      fill="none" stroke="#00ff88" stroke-width="0.8" opacity="0.3"/>
+
+    <!-- Hexagonal pattern inside shield -->
+    <path d="M0 -45 L25 -30 L25 0 L0 15 L-25 0 L-25 -30 Z" fill="none" stroke="url(#g3)" stroke-width="1.5" opacity="0.7"/>
+    <path d="M0 -25 L15 -17 L15 -2 L0 6 L-15 -2 L-15 -17 Z" fill="url(#g3)" opacity="0.15"/>
+
+    <!-- Lock icon in center -->
+    <rect x="-8" y="-12" width="16" height="14" rx="2" fill="none" stroke="#00ff88" stroke-width="1.5"/>
+    <path d="M-5 -12 L-5 -18 C-5 -24 5 -24 5 -18 L5 -12" fill="none" stroke="#00ff88" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="0" cy="-4" r="2" fill="#00ff88"/>
+
+    <!-- Signal waves from shield -->
+    <path d="M75 -20 Q95 -30 110 -15" fill="none" stroke="#00ff88" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+      <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M80 -25 Q110 -40 130 -18" fill="none" stroke="#00ff88" stroke-width="1" stroke-linecap="round" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.1;0.4" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M-75 -20 Q-95 -30 -110 -15" fill="none" stroke="#00b4d8" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+      <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M-80 -25 Q-110 -40 -130 -18" fill="none" stroke="#00b4d8" stroke-width="1" stroke-linecap="round" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.1;0.4" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Floating data nodes -->
+  <!-- Node 1 - top left -->
+  <g transform="translate(120,120)">
+    <circle cx="0" cy="0" r="20" fill="url(#glow1)" filter="url(#blur1)"/>
+    <circle cx="0" cy="0" r="6" fill="#131a2b" stroke="#00ff88" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="2" fill="#00ff88"/>
+    <line x1="6" y1="3" x2="170" y2="75" stroke="#00ff88" stroke-width="0.5" opacity="0.3" stroke-dasharray="4 4">
+      <animate attributeName="stroke-dashoffset" values="0;-8" dur="1s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Node 2 - top right -->
+  <g transform="translate(480,100)">
+    <circle cx="0" cy="0" r="20" fill="url(#glow2)" filter="url(#blur1)"/>
+    <circle cx="0" cy="0" r="6" fill="#131a2b" stroke="#00b4d8" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="2" fill="#00b4d8"/>
+    <line x1="-6" y1="3" x2="-170" y2="95" stroke="#00b4d8" stroke-width="0.5" opacity="0.3" stroke-dasharray="4 4">
+      <animate attributeName="stroke-dashoffset" values="0;-8" dur="1.2s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Node 3 - bottom left -->
+  <g transform="translate(100,320)">
+    <circle cx="0" cy="0" r="15" fill="url(#glow1)" filter="url(#blur1)"/>
+    <circle cx="0" cy="0" r="5" fill="#131a2b" stroke="#a78bfa" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="1.5" fill="#a78bfa"/>
+    <line x1="5" y1="-3" x2="190" y2="-115" stroke="#a78bfa" stroke-width="0.5" opacity="0.3" stroke-dasharray="4 4">
+      <animate attributeName="stroke-dashoffset" values="0;-8" dur="1.5s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Node 4 - bottom right -->
+  <g transform="translate(490,300)">
+    <circle cx="0" cy="0" r="15" fill="url(#glow2)" filter="url(#blur1)"/>
+    <circle cx="0" cy="0" r="5" fill="#131a2b" stroke="#00ff88" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="1.5" fill="#00ff88"/>
+    <line x1="-5" y1="-3" x2="-180" y2="-95" stroke="#00ff88" stroke-width="0.5" opacity="0.3" stroke-dasharray="4 4">
+      <animate attributeName="stroke-dashoffset" values="0;-8" dur="1.3s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Node 5 - mid left -->
+  <g transform="translate(150,220)">
+    <circle cx="0" cy="0" r="4" fill="#131a2b" stroke="#00b4d8" stroke-width="1"/>
+    <circle cx="0" cy="0" r="1.5" fill="#00b4d8"/>
+    <line x1="4" y1="-2" x2="140" y2="-18" stroke="#00b4d8" stroke-width="0.4" opacity="0.25" stroke-dasharray="3 3">
+      <animate attributeName="stroke-dashoffset" values="0;-6" dur="1.1s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Node 6 - mid right -->
+  <g transform="translate(460,210)">
+    <circle cx="0" cy="0" r="4" fill="#131a2b" stroke="#00ff88" stroke-width="1"/>
+    <circle cx="0" cy="0" r="1.5" fill="#00ff88"/>
+    <line x1="-4" y1="-2" x2="-150" y2="-8" stroke="#00ff88" stroke-width="0.4" opacity="0.25" stroke-dasharray="3 3">
+      <animate attributeName="stroke-dashoffset" values="0;-6" dur="1.4s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Orbiting particle ring -->
+  <ellipse cx="300" cy="200" rx="140" ry="50" fill="none" stroke="url(#g3)" stroke-width="0.5" opacity="0.2" transform="rotate(-15,300,200)"/>
+  <circle r="3" fill="#00ff88" opacity="0.8">
+    <animateMotion dur="6s" repeatCount="indefinite" path="M300,200 m-140,0 a140,50 0 1,0 280,0 a140,50 0 1,0 -280,0" rotate="auto"/>
+  </circle>
+
+  <!-- Floating binary text decoration -->
+  <text x="80" y="80" fill="#00ff88" opacity="0.08" font-family="monospace" font-size="11">01101001 01101110</text>
+  <text x="400" y="420" fill="#00b4d8" opacity="0.08" font-family="monospace" font-size="11">11010010 01110100</text>
+  <text x="60" y="400" fill="#a78bfa" opacity="0.06" font-family="monospace" font-size="9">THREAT INTEL</text>
+  <text x="430" y="70" fill="#00ff88" opacity="0.06" font-family="monospace" font-size="9">PODCAST FEED</text>
+</svg>

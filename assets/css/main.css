@@ -197,8 +197,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
-.logo-icon {
-  font-size: 1.5rem;
+.logo-svg {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
 }
 
 .logo-text {
@@ -266,10 +268,29 @@ h1, h2, h3, h4, h5, h6 {
   padding: 80px 0 60px;
   background: linear-gradient(180deg, rgba(0, 255, 136, 0.03) 0%, transparent 60%);
   border-bottom: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.hero-layout {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 .hero-content {
-  max-width: 700px;
+  max-width: 600px;
+  flex: 1;
+}
+
+.hero-visual {
+  flex: 1;
+  max-width: 500px;
+  flex-shrink: 0;
+}
+
+.hero-visual img {
+  width: 100%;
+  height: auto;
 }
 
 .hero-title {
@@ -944,6 +965,15 @@ h1, h2, h3, h4, h5, h6 {
 
   .stat-number {
     font-size: 1.5rem;
+  }
+
+  .hero-layout {
+    flex-direction: column;
+  }
+
+  .hero-visual {
+    max-width: 350px;
+    margin: 0 auto;
   }
 
   .episode-grid {
