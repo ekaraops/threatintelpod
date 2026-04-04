@@ -1,4 +1,4 @@
-baseURL = "https://YOUR_GITHUB_USERNAME.github.io/threatintelpod/"
+baseURL = "https://ekaraops.github.io/threatintelpod/"
 languageCode = "en-us"
 title = "ThreatIntelPod"
 # No external theme - all layouts are in layouts/
