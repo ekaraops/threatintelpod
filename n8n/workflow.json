@@ -1,0 +1,623 @@
+{
+  "name": "ThreatIntelPod - Podcast Summary Pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": 1,
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "node-schedule",
+      "name": "Weekly Monday 9AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ===========================================\n// FEED CONFIGURATION\n// Add or remove feeds here. Each feed needs:\n//   name: Display name of the show\n//   slug: URL-friendly name (lowercase, hyphens)\n//   type: 'channel' or 'playlist'\n//   id: YouTube channel ID (UC...) or playlist ID (PL...)\n//   category: Content category for the website\n//   description: Short description of the show\n// ===========================================\n\nconst feeds = [\n  {\n    name: 'SANS Internet Storm Center',\n    slug: 'sans-isc',\n    type: 'channel',\n    id: 'UCGyCV0hYfv41aFeIAszil0w',\n    category: 'threat-intelligence',\n    description: 'Daily cybersecurity threat updates and analysis'\n  },\n  {\n    name: 'Security Weekly',\n    slug: 'security-weekly',\n    type: 'channel',\n    id: 'UCg--XBjJ50a9tUhTKXVPiqg',\n    category: 'news',\n    description: 'Enterprise security news and interviews'\n  },\n  {\n    name: 'Defensive Podcasts',\n    slug: 'defensive-podcasts',\n    type: 'channel',\n    id: 'UCCuFaI_nwX4ZkUCkD-1e63A',\n    category: 'defense',\n    description: 'Blue team and defensive security content'\n  },\n  {\n    name: 'Risky Business',\n    slug: 'risky-business',\n    type: 'channel',\n    id: 'UCZzIaWixWHa96R7K4c40_Dg',\n    category: 'news',\n    description: 'Information security news and commentary'\n  },\n  {\n    name: 'Security Now',\n    slug: 'security-now',\n    type: 'channel',\n    id: 'UCNbqa_9xihC8yaV2o6dlsUg',\n    category: 'education',\n    description: 'Deep-dive security analysis with Steve Gibson'\n  },\n  {\n    name: 'Cybersecurity Playlist',\n    slug: 'cybersecurity-playlist',\n    type: 'playlist',\n    id: 'PLlPkFwQHxYE5n02SOQKzZHz1UXqwrZT68',\n    category: 'mixed',\n    description: 'Curated cybersecurity video playlist'\n  }\n];\n\n// Build RSS URLs\nconst items = feeds.map(feed => {\n  const paramKey = feed.type === 'playlist' ? 'playlist_id' : 'channel_id';\n  return {\n    json: {\n      ...feed,\n      rss_url: `https://www.youtube.com/feeds/videos.xml?${paramKey}=${feed.id}`\n    }\n  };\n});\n\nreturn items;"
+      },
+      "id": "node-load-feeds",
+      "name": "Load Feeds Config",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "node-loop-feeds",
+      "name": "Loop Feeds",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [440, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.rss_url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          },
+          "timeout": 15000
+        }
+      },
+      "id": "node-fetch-rss",
+      "name": "Fetch RSS Feed",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [660, 300],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse YouTube RSS XML and filter out already-seen videos\n// Only include videos published in the last 7 days\nconst xml = $input.first().json.data || $input.first().json.body || '';\nconst feedInfo = $('Loop Feeds').first().json;\n\n// Get persistent storage of seen video IDs\nconst staticData = $getWorkflowStaticData('global');\nif (!staticData.seenVideoIds) {\n  staticData.seenVideoIds = [];\n}\nconst seen = new Set(staticData.seenVideoIds);\n\n// Only process videos from the last 7 days\nconst sevenDaysAgo = new Date();\nsevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);\n\n// Parse entries from XML using regex (n8n Code nodes don't have DOMParser)\nconst entries = [];\nconst entryRegex = /<entry>(.*?)<\\/entry>/gs;\nlet match;\n\nwhile ((match = entryRegex.exec(xml)) !== null) {\n  const entry = match[1];\n  \n  const videoIdMatch = entry.match(/<yt:videoId>([^<]+)<\\/yt:videoId>/);\n  const titleMatch = entry.match(/<title>([^<]+)<\\/title>/);\n  const publishedMatch = entry.match(/<published>([^<]+)<\\/published>/);\n  const thumbnailMatch = entry.match(/url=\"(https:\\/\\/i[^\"]+)\"/);\n  const descriptionMatch = entry.match(/<media:description>([\\s\\S]*?)<\\/media:description>/);\n  \n  if (videoIdMatch) {\n    const videoId = videoIdMatch[1];\n    \n    // Skip already-seen videos\n    if (seen.has(videoId)) continue;\n    \n    // Skip videos older than 7 days\n    const publishedDate = publishedMatch ? new Date(publishedMatch[1]) : new Date();\n    if (publishedDate < sevenDaysAgo) continue;\n    \n    entries.push({\n      json: {\n        videoId,\n        title: titleMatch ? titleMatch[1] : 'Untitled',\n        published: publishedMatch ? publishedMatch[1] : new Date().toISOString(),\n        thumbnail: thumbnailMatch ? thumbnailMatch[1] : '',\n        description: descriptionMatch ? descriptionMatch[1].substring(0, 300) : '',\n        youtube_url: `https://www.youtube.com/watch?v=${videoId}`,\n        // Carry forward feed metadata\n        channel: feedInfo.name,\n        channel_slug: feedInfo.slug,\n        category: feedInfo.category,\n        feed_type: feedInfo.type\n      }\n    });\n  }\n}\n\n// If no new videos, return empty flag\nif (entries.length === 0) {\n  return [{ json: { _empty: true } }];\n}\n\nreturn entries;"
+      },
+      "id": "node-parse-rss",
+      "name": "Parse RSS & Filter New",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [880, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "condition-has-videos",
+              "leftValue": "={{ $json._empty }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "node-has-videos",
+      "name": "Has New Videos?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1100, 300]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "node-loop-videos",
+      "name": "Loop Videos",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [1320, 200]
+    },
+    {
+      "parameters": {
+        "sendTo": "#threatintelpod-approvals",
+        "message": "type=blocks",
+        "blocksUi": "=[\n  {\n    \"type\": \"header\",\n    \"text\": {\n      \"type\": \"plain_text\",\n      \"text\": \"New Episode Detected\"\n    }\n  },\n  {\n    \"type\": \"section\",\n    \"text\": {\n      \"type\": \"mrkdwn\",\n      \"text\": \"*{{ $json.title }}*\\n\\n*Channel:* {{ $json.channel }}\\n*Published:* {{ $json.published }}\\n*Category:* {{ $json.category }}\"\n    },\n    \"accessory\": {\n      \"type\": \"image\",\n      \"image_url\": \"{{ $json.thumbnail }}\",\n      \"alt_text\": \"Video thumbnail\"\n    }\n  },\n  {\n    \"type\": \"section\",\n    \"text\": {\n      \"type\": \"mrkdwn\",\n      \"text\": \"{{ $json.youtube_url }}\"\n    }\n  }\n]",
+        "otherOptions": {}
+      },
+      "id": "node-slack-approval",
+      "name": "Slack: Approve Episode?",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [1540, 200],
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "SLACK_CREDENTIAL_ID",
+          "name": "Slack account"
+        }
+      },
+      "waitForApproval": {
+        "approvalType": "single",
+        "approveLabel": "Summarize",
+        "disapproveLabel": "Skip"
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "condition-approved",
+              "leftValue": "={{ $json.response?.status }}",
+              "rightValue": "approved",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "node-approved",
+      "name": "Approved?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1760, 200]
+    },
+    {
+      "parameters": {
+        "url": "https://api.supadata.ai/v1/transcript",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $('Loop Videos').item.json.youtube_url }}"
+            },
+            {
+              "name": "lang",
+              "value": "en"
+            },
+            {
+              "name": "text",
+              "value": "true"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "YOUR_SUPADATA_API_KEY"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "node-fetch-transcript",
+      "name": "Fetch Transcript (Supadata)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1980, 100],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "amount": 3,
+        "unit": "seconds"
+      },
+      "id": "node-rate-limit",
+      "name": "Rate Limit Pause",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [2200, 100]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Check if transcript was fetched successfully\nconst transcriptData = $input.first().json;\nconst videoInfo = $('Loop Videos').item.json;\n\nconst transcript = transcriptData.content || transcriptData.data || '';\n\nif (!transcript || transcript.length < 100) {\n  // No transcript available - skip this video\n  return [{\n    json: {\n      ...videoInfo,\n      _noTranscript: true,\n      _skipReason: 'Transcript unavailable or too short'\n    }\n  }];\n}\n\n// Truncate if extremely long (safety for LLM context window)\nconst maxChars = 150000;\nconst trimmedTranscript = transcript.length > maxChars \n  ? transcript.substring(0, maxChars) + '\\n\\n[Transcript truncated due to length]'\n  : transcript;\n\nreturn [{\n  json: {\n    ...videoInfo,\n    transcript: trimmedTranscript,\n    _noTranscript: false\n  }\n}];"
+      },
+      "id": "node-check-transcript",
+      "name": "Check Transcript",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2420, 100]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "condition-has-transcript",
+              "leftValue": "={{ $json._noTranscript }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "node-has-transcript",
+      "name": "Has Transcript?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [2640, 100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer YOUR_OPENROUTER_API_KEY"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "https://threatintelpod.github.io"
+            },
+            {
+              "name": "X-Title",
+              "value": "ThreatIntelPod"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"anthropic/claude-sonnet-4-20250514\",\n  \"max_tokens\": 8000,\n  \"temperature\": 0.3,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are an expert cybersecurity analyst who creates structured podcast summaries for CISOs, SOC teams, and security leaders. Your summaries must be clear, actionable, and written in simple English (5th-6th grade reading level). Focus only on useful, high-signal insights. Do NOT include fluff or repetition. If something is unclear, state it clearly instead of guessing.\\n\\nFormat your output in Markdown with the following sections, each with 5-6 bullet points:\\n\\n## TL;DR (Too Long, Didn't Read)\\nProvide 5-6 bullet points capturing the most critical insights for decision-making.\\n\\n## New Tools, Techniques, and Tactics\\nAny new tools, frameworks, attack methods, or workflows mentioned. Include names and short explanations.\\n\\n## Detection & Defense Insights\\nDetection ideas, signals, logs, or behaviors. Defensive recommendations. SOC-relevant insights (SIEM, EDR, identity, etc.)\\n\\n## Real-World Examples & Stories\\nPersonal experiences shared by speakers. Case studies or incidents. Practical lessons learned.\\n\\n## Research, References & Resources\\nResearch papers, blogs, tools, datasets, or frameworks mentioned. External references worth exploring.\\n\\n## Key Industry Insights & Trends\\nImportant observations about the cybersecurity landscape. Emerging trends or early signals. Changes in attacker behavior or technology.\\n\\n## Business & Risk Implications\\nTranslate technical insights into business impact. Who is affected and how (enterprise, SMB, SaaS, etc.). Financial, operational, or reputational risks.\\n\\n## Opinions vs Facts\\nClearly separate verified facts/observations from opinions, predictions, or assumptions.\\n\\n## Contradictions & Debates (if any)\\nCapture disagreements or alternative viewpoints. Highlight different perspectives.\\n\\n## Actionable Takeaways\\nWhat should a CISO, SOC team, or security leader do next. Practical, implementable recommendations.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Please create a structured summary of this cybersecurity podcast episode.\\n\\n**Episode Title:** {{ $json.title }}\\n**Channel:** {{ $json.channel }}\\n**Published:** {{ $json.published }}\\n\\n**Full Transcript:**\\n{{ $json.transcript }}\"\n    }\n  ]\n}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "node-summarize",
+      "name": "Summarize with LLM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2860, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format the LLM summary as a Hugo markdown file and prepare for GitHub push\nconst videoInfo = $('Loop Videos').item.json;\nconst llmResponse = $input.first().json;\n\n// Extract the summary text from the LLM response\nconst summary = llmResponse.choices?.[0]?.message?.content || 'Summary generation failed.';\n\n// Build a URL-safe slug from the title\nconst titleSlug = videoInfo.title\n  .toLowerCase()\n  .replace(/[^a-z0-9]+/g, '-')\n  .replace(/^-|-$/g, '')\n  .substring(0, 60);\n\n// Format date for filename and frontmatter\nconst pubDate = new Date(videoInfo.published);\nconst dateStr = pubDate.toISOString().split('T')[0]; // YYYY-MM-DD\n\nconst filename = `${dateStr}-${videoInfo.channel_slug}-${titleSlug}.md`;\n\n// Build Hugo markdown with YAML frontmatter\nconst markdown = `---\ntitle: \"${videoInfo.title.replace(/\"/g, '\\\\\"')}\"\ndate: ${pubDate.toISOString()}\ndraft: false\nchannel: \"${videoInfo.channel}\"\nchannel_slug: \"${videoInfo.channel_slug}\"\ncategory: \"${videoInfo.category}\"\nyoutube_url: \"${videoInfo.youtube_url}\"\nvideo_id: \"${videoInfo.videoId}\"\nthumbnail: \"${videoInfo.thumbnail}\"\ndescription: \"AI-generated summary of ${videoInfo.title} from ${videoInfo.channel}\"\ntags: [\"${videoInfo.category}\"]\n---\n\n${summary}\n`;\n\n// Base64 encode for GitHub API\nconst base64Content = Buffer.from(markdown).toString('base64');\n\nreturn [{\n  json: {\n    ...videoInfo,\n    filename,\n    markdown,\n    base64Content,\n    filePath: `content/episodes/${filename}`\n  }\n}];"
+      },
+      "id": "node-format-markdown",
+      "name": "Format Hugo Markdown",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3080, 0]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.github.com/repos/ekaraops/threatintelpod/contents/{{ $json.filePath }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer YOUR_GITHUB_PAT"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\": \"Add summary: {{ $json.filename }}\",\n  \"content\": \"{{ $json.base64Content }}\",\n  \"branch\": \"main\"\n}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "node-push-github",
+      "name": "Push to GitHub",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [3300, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Mark video as seen in persistent static data\nconst staticData = $getWorkflowStaticData('global');\nif (!staticData.seenVideoIds) {\n  staticData.seenVideoIds = [];\n}\n\nconst videoId = $('Loop Videos').item.json.videoId;\n\nif (!staticData.seenVideoIds.includes(videoId)) {\n  staticData.seenVideoIds.push(videoId);\n}\n\n// Cap at 2000 entries to prevent unbounded growth\nif (staticData.seenVideoIds.length > 2000) {\n  staticData.seenVideoIds = staticData.seenVideoIds.slice(-2000);\n}\n\nreturn [{ json: { videoId, status: 'marked_as_seen', totalSeen: staticData.seenVideoIds.length } }];"
+      },
+      "id": "node-mark-seen",
+      "name": "Mark Video Seen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3520, 200]
+    },
+    {
+      "parameters": {
+        "sendTo": "#threatintelpod-approvals",
+        "message": "=:warning: *Transcript unavailable* for \"{{ $('Loop Videos').item.json.title }}\" from {{ $('Loop Videos').item.json.channel }}. Skipping this episode.\n\n{{ $('Loop Videos').item.json.youtube_url }}",
+        "otherOptions": {}
+      },
+      "id": "node-notify-no-transcript",
+      "name": "Slack: No Transcript",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [2860, 200],
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "SLACK_CREDENTIAL_ID",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Mark rejected video as seen so it doesn't reappear\nconst staticData = $getWorkflowStaticData('global');\nif (!staticData.seenVideoIds) {\n  staticData.seenVideoIds = [];\n}\n\nconst videoId = $('Loop Videos').item.json.videoId;\n\nif (!staticData.seenVideoIds.includes(videoId)) {\n  staticData.seenVideoIds.push(videoId);\n}\n\nif (staticData.seenVideoIds.length > 2000) {\n  staticData.seenVideoIds = staticData.seenVideoIds.slice(-2000);\n}\n\nreturn [{ json: { videoId, status: 'rejected_and_marked_seen' } }];"
+      },
+      "id": "node-mark-rejected",
+      "name": "Mark Rejected Seen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1980, 360]
+    }
+  ],
+  "connections": {
+    "Weekly Monday 9AM": {
+      "main": [
+        [
+          {
+            "node": "Load Feeds Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Feeds Config": {
+      "main": [
+        [
+          {
+            "node": "Loop Feeds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Feeds": {
+      "main": [
+        null,
+        [
+          {
+            "node": "Fetch RSS Feed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch RSS Feed": {
+      "main": [
+        [
+          {
+            "node": "Parse RSS & Filter New",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse RSS & Filter New": {
+      "main": [
+        [
+          {
+            "node": "Has New Videos?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has New Videos?": {
+      "main": [
+        [
+          {
+            "node": "Loop Videos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Feeds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Videos": {
+      "main": [
+        [
+          {
+            "node": "Loop Feeds",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Slack: Approve Episode?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack: Approve Episode?": {
+      "main": [
+        [
+          {
+            "node": "Approved?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Approved?": {
+      "main": [
+        [
+          {
+            "node": "Fetch Transcript (Supadata)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark Rejected Seen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Transcript (Supadata)": {
+      "main": [
+        [
+          {
+            "node": "Rate Limit Pause",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rate Limit Pause": {
+      "main": [
+        [
+          {
+            "node": "Check Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Transcript": {
+      "main": [
+        [
+          {
+            "node": "Has Transcript?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has Transcript?": {
+      "main": [
+        [
+          {
+            "node": "Summarize with LLM",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Slack: No Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize with LLM": {
+      "main": [
+        [
+          {
+            "node": "Format Hugo Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Hugo Markdown": {
+      "main": [
+        [
+          {
+            "node": "Push to GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Push to GitHub": {
+      "main": [
+        [
+          {
+            "node": "Mark Video Seen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Video Seen": {
+      "main": [
+        [
+          {
+            "node": "Loop Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack: No Transcript": {
+      "main": [
+        [
+          {
+            "node": "Mark Video Seen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Rejected Seen": {
+      "main": [
+        [
+          {
+            "node": "Loop Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "global": {
+      "seenVideoIds": []
+    }
+  },
+  "tags": [
+    {
+      "name": "ThreatIntelPod"
+    },
+    {
+      "name": "podcast-summary"
+    }
+  ],
+  "triggerCount": 1
+}

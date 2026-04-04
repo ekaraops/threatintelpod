@@ -1,0 +1,27 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="logo-icon">&#x1f6e1;</span>
+        <span class="logo-text">ThreatIntelPod</span>
+        <p class="footer-tagline">{{ .Site.Params.description }}</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigate</h4>
+        {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}">{{ .Name }}</a>
+        {{ end }}
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {{ now.Year }} ThreatIntelPod. Summaries are AI-generated and may contain inaccuracies.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.mobile-menu-toggle')?.addEventListener('click', function() {
+  document.querySelector('.site-nav').classList.toggle('open');
+  this.classList.toggle('active');
+});
+</script>

@@ -1,0 +1,16 @@
+<header class="site-header">
+  <div class="container">
+    <a href="{{ .Site.BaseURL }}" class="site-logo">
+      <span class="logo-icon">&#x1f6e1;</span>
+      <span class="logo-text">ThreatIntelPod</span>
+    </a>
+    <nav class="site-nav">
+      {{ range .Site.Menus.main }}
+      <a href="{{ .URL }}" class="nav-link{{ if $.IsMenuCurrent "main" . }} active{{ end }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>

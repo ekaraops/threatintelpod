@@ -1,0 +1,499 @@
+{
+  "name": "ThreatIntelPod v2 - Podcast Summary Pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": 1,
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "a1",
+      "name": "Weekly Monday 9AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ===========================================\n// FEED CONFIGURATION\n// Add or remove feeds here.\n// ===========================================\n\nconst feeds = [\n  {\n    name: 'SANS Internet Storm Center',\n    slug: 'sans-isc',\n    type: 'channel',\n    id: 'UCGyCV0hYfv41aFeIAszil0w',\n    category: 'threat-intelligence',\n    description: 'Daily cybersecurity threat updates and analysis'\n  },\n  {\n    name: 'Security Weekly',\n    slug: 'security-weekly',\n    type: 'channel',\n    id: 'UCg--XBjJ50a9tUhTKXVPiqg',\n    category: 'news',\n    description: 'Enterprise security news and interviews'\n  },\n  {\n    name: 'Defensive Podcasts',\n    slug: 'defensive-podcasts',\n    type: 'channel',\n    id: 'UCCuFaI_nwX4ZkUCkD-1e63A',\n    category: 'defense',\n    description: 'Blue team and defensive security content'\n  },\n  {\n    name: 'Risky Business',\n    slug: 'risky-business',\n    type: 'channel',\n    id: 'UCZzIaWixWHa96R7K4c40_Dg',\n    category: 'news',\n    description: 'Information security news and commentary'\n  },\n  {\n    name: 'Security Now',\n    slug: 'security-now',\n    type: 'channel',\n    id: 'UCNbqa_9xihC8yaV2o6dlsUg',\n    category: 'education',\n    description: 'Deep-dive security analysis with Steve Gibson'\n  },\n  {\n    name: 'Cybersecurity Playlist',\n    slug: 'cybersecurity-playlist',\n    type: 'playlist',\n    id: 'PLlPkFwQHxYE5n02SOQKzZHz1UXqwrZT68',\n    category: 'mixed',\n    description: 'Curated cybersecurity video playlist'\n  }\n];\n\nconst items = feeds.map(feed => {\n  const paramKey = feed.type === 'playlist' ? 'playlist_id' : 'channel_id';\n  return {\n    json: {\n      ...feed,\n      rss_url: `https://www.youtube.com/feeds/videos.xml?${paramKey}=${feed.id}`\n    }\n  };\n});\n\nreturn items;"
+      },
+      "id": "a2",
+      "name": "Load Feeds Config",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "a3",
+      "name": "Loop Feeds",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [440, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.rss_url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          },
+          "timeout": 15000
+        }
+      },
+      "id": "a4",
+      "name": "Fetch RSS Feed",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [660, 300],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse YouTube RSS XML and filter new videos (last 7 days + not seen)\nconst xml = $input.first().json.data || $input.first().json.body || '';\nconst feedInfo = $('Loop Feeds').first().json;\n\nconst staticData = $getWorkflowStaticData('global');\nif (!staticData.seenVideoIds) {\n  staticData.seenVideoIds = [];\n}\nconst seen = new Set(staticData.seenVideoIds);\n\n// Only videos from the last 7 days\nconst sevenDaysAgo = new Date();\nsevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);\n\nconst entries = [];\nconst entryRegex = /<entry>([\\s\\S]*?)<\\/entry>/g;\nlet match;\n\nwhile ((match = entryRegex.exec(xml)) !== null) {\n  const entry = match[1];\n  const videoIdMatch = entry.match(/<yt:videoId>([^<]+)<\\/yt:videoId>/);\n  const titleMatch = entry.match(/<title>([^<]+)<\\/title>/);\n  const publishedMatch = entry.match(/<published>([^<]+)<\\/published>/);\n  const thumbnailMatch = entry.match(/url=\"(https:\\/\\/i[^\"]+)\"/);\n  const descriptionMatch = entry.match(/<media:description>([\\s\\S]*?)<\\/media:description>/);\n\n  if (videoIdMatch) {\n    const videoId = videoIdMatch[1];\n    if (seen.has(videoId)) continue;\n\n    const publishedDate = publishedMatch ? new Date(publishedMatch[1]) : new Date();\n    if (publishedDate < sevenDaysAgo) continue;\n\n    entries.push({\n      json: {\n        videoId,\n        title: titleMatch ? titleMatch[1] : 'Untitled',\n        published: publishedMatch ? publishedMatch[1] : new Date().toISOString(),\n        thumbnail: thumbnailMatch ? thumbnailMatch[1] : '',\n        description: descriptionMatch ? descriptionMatch[1].substring(0, 300) : '',\n        youtube_url: `https://www.youtube.com/watch?v=${videoId}`,\n        channel: feedInfo.name,\n        channel_slug: feedInfo.slug,\n        category: feedInfo.category\n      }\n    });\n  }\n}\n\nif (entries.length === 0) {\n  return [{ json: { _empty: true } }];\n}\n\nreturn entries;"
+      },
+      "id": "a5",
+      "name": "Parse RSS & Filter New",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [880, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "c1",
+              "leftValue": "={{ $json._empty }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "a6",
+      "name": "Has New Videos?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1100, 300]
+    },
+    {
+      "parameters": {
+        "sendTo": "#threatintelpod-n8n",
+        "message": "=*New Episode Detected*\n\n*Title:* {{ $json.title }}\n*Channel:* {{ $json.channel }}\n*Published:* {{ $json.published }}\n*Category:* {{ $json.category }}\n\n{{ $json.youtube_url }}",
+        "otherOptions": {}
+      },
+      "id": "a7",
+      "name": "Slack: Approve Episode?",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [1320, 200],
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "SLACK_CREDENTIAL_ID",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "c2",
+              "leftValue": "={{ $json.data.approved }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "a8",
+      "name": "Approved?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1540, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Recover original video data that was lost by Slack Send & Wait.\n// Slack only returns { data: { approved: true } } — no video info.\n// Pull the original video data from the Has New Videos? node output.\nconst allVideos = $('Has New Videos?').all();\nconst idx = $runIndex;\nconst video = allVideos[idx]?.json || {};\n\nreturn [{ json: { ...video } }];"
+      },
+      "id": "a9",
+      "name": "Recover Video Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1760, 100]
+    },
+    {
+      "parameters": {
+        "url": "https://api.supadata.ai/v1/transcript",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $json.youtube_url }}"
+            },
+            {
+              "name": "lang",
+              "value": "en"
+            },
+            {
+              "name": "text",
+              "value": "true"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "YOUR_SUPADATA_API_KEY"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "a10",
+      "name": "Fetch Transcript",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1980, 100],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Check transcript and merge with video data from previous node\nconst input = $input.first().json;\n\n// Get video info from Recover Video Data node\nconst video = $('Recover Video Data').first().json;\n\nconst transcript = input.content || input.data || '';\n\nif (!transcript || transcript.length < 100) {\n  return [{\n    json: {\n      ...video,\n      _noTranscript: true,\n      _skipReason: 'Transcript unavailable or too short'\n    }\n  }];\n}\n\nconst maxChars = 150000;\nconst trimmed = transcript.length > maxChars\n  ? transcript.substring(0, maxChars) + '\\n\\n[Transcript truncated]'\n  : transcript;\n\nreturn [{\n  json: {\n    ...video,\n    transcript: trimmed,\n    _noTranscript: false\n  }\n}];"
+      },
+      "id": "a11",
+      "name": "Check Transcript",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2200, 100]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "c3",
+              "leftValue": "={{ $json._noTranscript }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "a12",
+      "name": "Has Transcript?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [2420, 100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer YOUR_OPENROUTER_API_KEY"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "https://ekaraops.github.io/threatintelpod/"
+            },
+            {
+              "name": "X-Title",
+              "value": "ThreatIntelPod"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"anthropic/claude-3.5-sonnet\",\n  \"max_tokens\": 8000,\n  \"temperature\": 0.3,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are an expert cybersecurity analyst who creates structured podcast summaries for CISOs, SOC teams, and security leaders. Your summaries must be clear, actionable, and written in simple English (5th-6th grade reading level). Focus only on useful, high-signal insights. Do NOT include fluff or repetition. If something is unclear, state it clearly instead of guessing.\\n\\nFormat your output in Markdown with the following sections, each with 5-6 bullet points:\\n\\n## TL;DR (Too Long, Didn't Read)\\nProvide 5-6 bullet points capturing the most critical insights for decision-making.\\n\\n## New Tools, Techniques, and Tactics\\nAny new tools, frameworks, attack methods, or workflows mentioned. Include names and short explanations.\\n\\n## Detection & Defense Insights\\nDetection ideas, signals, logs, or behaviors. Defensive recommendations. SOC-relevant insights (SIEM, EDR, identity, etc.)\\n\\n## Real-World Examples & Stories\\nPersonal experiences shared by speakers. Case studies or incidents. Practical lessons learned.\\n\\n## Research, References & Resources\\nResearch papers, blogs, tools, datasets, or frameworks mentioned. External references worth exploring.\\n\\n## Key Industry Insights & Trends\\nImportant observations about the cybersecurity landscape. Emerging trends or early signals. Changes in attacker behavior or technology.\\n\\n## Business & Risk Implications\\nTranslate technical insights into business impact. Who is affected and how (enterprise, SMB, SaaS, etc.). Financial, operational, or reputational risks.\\n\\n## Opinions vs Facts\\nClearly separate verified facts/observations from opinions, predictions, or assumptions.\\n\\n## Contradictions & Debates (if any)\\nCapture disagreements or alternative viewpoints. Highlight different perspectives.\\n\\n## Actionable Takeaways\\nWhat should a CISO, SOC team, or security leader do next. Practical, implementable recommendations.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Please create a structured summary of this cybersecurity podcast episode.\\n\\n**Episode Title:** {{ $json.title }}\\n**Channel:** {{ $json.channel }}\\n**Published:** {{ $json.published }}\\n\\n**Full Transcript:**\\n{{ $json.transcript }}\"\n    }\n  ]\n}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "a13",
+      "name": "Summarize with LLM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2640, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format summary as Hugo markdown and prepare for GitHub push\nconst video = $('Recover Video Data').first().json;\nconst llmResponse = $input.first().json;\nconst summary = llmResponse.choices?.[0]?.message?.content || 'Summary generation failed.';\n\nconst titleSlug = video.title\n  .toLowerCase()\n  .replace(/[^a-z0-9]+/g, '-')\n  .replace(/^-|-$/g, '')\n  .substring(0, 60);\n\nconst pubDate = new Date(video.published);\nconst dateStr = pubDate.toISOString().split('T')[0];\nconst filename = `${dateStr}-${video.channel_slug}-${titleSlug}.md`;\n\nconst markdown = `---\\ntitle: \"${video.title.replace(/\"/g, '\\\\\"')}\"\\ndate: ${pubDate.toISOString()}\\ndraft: false\\nchannel: \"${video.channel}\"\\nchannel_slug: \"${video.channel_slug}\"\\ncategory: \"${video.category}\"\\nyoutube_url: \"${video.youtube_url}\"\\nvideo_id: \"${video.videoId}\"\\nthumbnail: \"${video.thumbnail}\"\\ndescription: \"AI-generated summary of ${video.title} from ${video.channel}\"\\ntags: [\"${video.category}\"]\\n---\\n\\n${summary}\\n`;\n\nconst base64Content = Buffer.from(markdown).toString('base64');\n\nreturn [{\n  json: {\n    ...video,\n    filename,\n    base64Content,\n    filePath: `content/episodes/${filename}`\n  }\n}];"
+      },
+      "id": "a14",
+      "name": "Format Hugo Markdown",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2860, 0]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.github.com/repos/ekaraops/threatintelpod/contents/{{ $json.filePath }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer YOUR_GITHUB_PAT"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\": \"Add summary: {{ $json.filename }}\",\n  \"content\": \"{{ $json.base64Content }}\",\n  \"branch\": \"main\"\n}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "a15",
+      "name": "Push to GitHub",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [3080, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Mark video as seen in persistent static data\nconst staticData = $getWorkflowStaticData('global');\nif (!staticData.seenVideoIds) {\n  staticData.seenVideoIds = [];\n}\n\nconst videoId = $json.videoId;\n\nif (videoId && !staticData.seenVideoIds.includes(videoId)) {\n  staticData.seenVideoIds.push(videoId);\n}\n\nif (staticData.seenVideoIds.length > 2000) {\n  staticData.seenVideoIds = staticData.seenVideoIds.slice(-2000);\n}\n\nreturn [{ json: { videoId, status: 'marked_as_seen', totalSeen: staticData.seenVideoIds.length } }];"
+      },
+      "id": "a16",
+      "name": "Mark Video Seen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3300, 100]
+    },
+    {
+      "parameters": {
+        "sendTo": "#threatintelpod-n8n",
+        "message": "=:warning: *Transcript unavailable* for \"{{ $json.title }}\" from {{ $json.channel }}. Skipping this episode.\n\n{{ $json.youtube_url }}",
+        "otherOptions": {}
+      },
+      "id": "a17",
+      "name": "Slack: No Transcript",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [2640, 200],
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "SLACK_CREDENTIAL_ID",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Recover video data for rejected items (same logic as approved path)\nconst allVideos = $('Has New Videos?').all();\nconst idx = $runIndex;\nconst video = allVideos[idx]?.json || {};\n\nreturn [{ json: { ...video, status: 'rejected' } }];"
+      },
+      "id": "a18",
+      "name": "Recover Rejected Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1760, 360]
+    }
+  ],
+  "connections": {
+    "Weekly Monday 9AM": {
+      "main": [
+        [
+          { "node": "Load Feeds Config", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Load Feeds Config": {
+      "main": [
+        [
+          { "node": "Loop Feeds", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Loop Feeds": {
+      "main": [
+        null,
+        [
+          { "node": "Fetch RSS Feed", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Fetch RSS Feed": {
+      "main": [
+        [
+          { "node": "Parse RSS & Filter New", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Parse RSS & Filter New": {
+      "main": [
+        [
+          { "node": "Has New Videos?", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Has New Videos?": {
+      "main": [
+        [
+          { "node": "Slack: Approve Episode?", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "Loop Feeds", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Slack: Approve Episode?": {
+      "main": [
+        [
+          { "node": "Approved?", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Approved?": {
+      "main": [
+        [
+          { "node": "Recover Video Data", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "Recover Rejected Data", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Recover Video Data": {
+      "main": [
+        [
+          { "node": "Fetch Transcript", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Fetch Transcript": {
+      "main": [
+        [
+          { "node": "Check Transcript", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Check Transcript": {
+      "main": [
+        [
+          { "node": "Has Transcript?", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Has Transcript?": {
+      "main": [
+        [
+          { "node": "Summarize with LLM", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "Slack: No Transcript", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Summarize with LLM": {
+      "main": [
+        [
+          { "node": "Format Hugo Markdown", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Format Hugo Markdown": {
+      "main": [
+        [
+          { "node": "Push to GitHub", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Push to GitHub": {
+      "main": [
+        [
+          { "node": "Mark Video Seen", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Mark Video Seen": {
+      "main": [
+        [
+          { "node": "Loop Feeds", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Slack: No Transcript": {
+      "main": [
+        [
+          { "node": "Mark Video Seen", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Recover Rejected Data": {
+      "main": [
+        [
+          { "node": "Mark Video Seen", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "global": {
+      "seenVideoIds": []
+    }
+  },
+  "tags": [
+    { "name": "ThreatIntelPod" },
+    { "name": "podcast-summary" }
+  ],
+  "triggerCount": 1
+}

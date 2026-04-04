@@ -1,0 +1,70 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">Cybersecurity Intelligence,<br><span class="accent">Summarized.</span></h1>
+      <p class="hero-subtitle">AI-powered summaries of the top cybersecurity podcasts. Built for CISOs, SOC teams, and security leaders who need signal, not noise.</p>
+      <a href="{{ .Site.BaseURL }}episodes/" class="btn btn-primary">Browse Episodes</a>
+    </div>
+    <div class="hero-stats">
+      {{ $episodes := where .Site.RegularPages "Section" "episodes" }}
+      <div class="stat">
+        <span class="stat-number">{{ len $episodes }}</span>
+        <span class="stat-label">Episodes</span>
+      </div>
+      <div class="stat">
+        {{ $channels := $episodes.GroupByParam "channel" }}
+        <span class="stat-number">{{ len $channels }}</span>
+        <span class="stat-label">Channels</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">10+</span>
+        <span class="stat-label">Sources</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="recent-episodes">
+  <div class="container">
+    <div class="section-header">
+      <h2>Latest Summaries</h2>
+      <a href="{{ .Site.BaseURL }}episodes/" class="view-all">View all &rarr;</a>
+    </div>
+    <div class="episode-grid">
+      {{ $episodes := (where .Site.RegularPages "Section" "episodes").ByDate.Reverse }}
+      {{ range first 6 $episodes }}
+        {{ partial "episode-card.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works">
+  <div class="container">
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-icon">&#x1f4e1;</div>
+        <h3>Monitor</h3>
+        <p>We track 10+ cybersecurity YouTube channels and podcasts via RSS feeds, checking for new episodes weekly.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">&#x1f9d1;&#x200d;&#x1f4bb;</div>
+        <h3>Curate</h3>
+        <p>Each new episode is reviewed by a human before processing. Only the most relevant content gets summarized.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">&#x1f916;</div>
+        <h3>Summarize</h3>
+        <p>AI analyzes the full transcript and produces structured summaries with actionable takeaways for security leaders.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">&#x1f4cb;</div>
+        <h3>Publish</h3>
+        <p>Summaries are published here with key topics, tools mentioned, detection insights, and business implications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

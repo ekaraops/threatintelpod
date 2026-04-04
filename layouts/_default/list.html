@@ -1,0 +1,27 @@
+{{ define "main" }}
+<section class="page-header">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}
+    <p class="page-description">{{ . }}</p>
+    {{ end }}
+  </div>
+</section>
+
+<section class="episodes-list">
+  <div class="container">
+    <div class="episode-grid">
+      {{ range .Pages.ByDate.Reverse }}
+        {{ partial "episode-card.html" . }}
+      {{ end }}
+    </div>
+    {{ if not .Pages }}
+    <div class="empty-state">
+      <span class="empty-icon">&#x1f4e1;</span>
+      <h3>No episodes yet</h3>
+      <p>Summaries will appear here once episodes are processed through the pipeline.</p>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

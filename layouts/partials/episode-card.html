@@ -1,0 +1,28 @@
+<article class="episode-card">
+  <a href="{{ .Permalink }}" class="card-link">
+    <div class="card-thumbnail">
+      {{ with .Params.thumbnail }}
+      <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+      {{ else }}
+      <div class="card-thumbnail-placeholder">
+        <span>&#x1f399;</span>
+      </div>
+      {{ end }}
+      {{ with .Params.category }}
+      <span class="card-badge">{{ . }}</span>
+      {{ end }}
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        {{ with .Params.channel }}
+        <span class="card-channel">{{ . }}</span>
+        {{ end }}
+        <span class="card-date">{{ .Date.Format "Jan 2, 2006" }}</span>
+      </div>
+      <h3 class="card-title">{{ .Title }}</h3>
+      {{ with .Params.description }}
+      <p class="card-excerpt">{{ . | truncate 120 }}</p>
+      {{ end }}
+    </div>
+  </a>
+</article>
