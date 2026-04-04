@@ -33,7 +33,7 @@
     </div>
     <div class="episode-grid">
       {{ $episodes := (where .Site.RegularPages "Section" "episodes").ByDate.Reverse }}
-      {{ range first 6 $episodes }}
+      {{ range first 12 $episodes }}
         {{ partial "episode-card.html" . }}
       {{ end }}
     </div>
