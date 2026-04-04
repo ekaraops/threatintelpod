@@ -706,6 +706,110 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
+   CHANNELS PAGE
+   ============================================ */
+.channels-section {
+  padding: 48px 0 80px;
+}
+
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.channel-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.channel-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-4px);
+  color: inherit;
+}
+
+.channel-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.channel-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.channel-type-badge {
+  padding: 3px 10px;
+  background: rgba(0, 180, 216, 0.12);
+  color: var(--accent-cyan);
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: var(--radius-sm);
+}
+
+.channel-name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.channel-description {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.channel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.channel-tag {
+  padding: 3px 10px;
+  background: rgba(0, 255, 136, 0.08);
+  color: var(--accent-green-dim);
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 500;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 255, 136, 0.15);
+}
+
+.channel-cta {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: var(--accent-green);
+  font-weight: 600;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.channel-card:hover .channel-cta {
+  color: var(--accent-cyan);
+}
+
+/* ============================================
    EMPTY STATE
    ============================================ */
 .empty-state {

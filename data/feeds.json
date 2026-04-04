@@ -3,8 +3,8 @@
     "name": "SANS Internet Storm Center",
     "slug": "sans-isc",
     "type": "channel",
+    "youtube_url": "https://www.youtube.com/@internetstormcenterstormca2350",
     "id": "UCGyCV0hYfv41aFeIAszil0w",
-    "rss_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCGyCV0hYfv41aFeIAszil0w",
     "category": "threat-intelligence",
     "description": "Daily cybersecurity threat updates and analysis from SANS ISC",
     "tags": ["threats", "daily-updates", "network-security"]
@@ -13,8 +13,8 @@
     "name": "Security Weekly",
     "slug": "security-weekly",
     "type": "channel",
+    "youtube_url": "https://www.youtube.com/@SecurityWeekly",
     "id": "UCg--XBjJ50a9tUhTKXVPiqg",
-    "rss_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCg--XBjJ50a9tUhTKXVPiqg",
     "category": "news",
     "description": "Enterprise security news, interviews, and technical segments",
     "tags": ["news", "interviews", "enterprise-security"]
@@ -23,8 +23,8 @@
     "name": "Defensive Podcasts",
     "slug": "defensive-podcasts",
     "type": "channel",
+    "youtube_url": "https://www.youtube.com/@DefensivePodcasts",
     "id": "UCCuFaI_nwX4ZkUCkD-1e63A",
-    "rss_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCCuFaI_nwX4ZkUCkD-1e63A",
     "category": "defense",
     "description": "Blue team and defensive security content",
     "tags": ["blue-team", "defense", "soc"]
@@ -33,8 +33,8 @@
     "name": "Risky Business Media",
     "slug": "risky-business",
     "type": "channel",
+    "youtube_url": "https://www.youtube.com/@riskybizmedia",
     "id": "UCZzIaWixWHa96R7K4c40_Dg",
-    "rss_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCZzIaWixWHa96R7K4c40_Dg",
     "category": "news",
     "description": "Information security news and commentary by Patrick Gray",
     "tags": ["news", "commentary", "industry"]
@@ -43,18 +43,48 @@
     "name": "Security Now",
     "slug": "security-now",
     "type": "channel",
+    "youtube_url": "https://www.youtube.com/@securityNow",
     "id": "UCNbqa_9xihC8yaV2o6dlsUg",
-    "rss_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCNbqa_9xihC8yaV2o6dlsUg",
     "category": "education",
     "description": "Deep-dive security analysis with Steve Gibson and Leo Laporte",
     "tags": ["education", "deep-dive", "analysis"]
   },
   {
+    "name": "Dr Eric Cole",
+    "slug": "dr-eric-cole",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@DrEricCole",
+    "id": "",
+    "category": "leadership",
+    "description": "CISO career guidance and cybersecurity leadership insights",
+    "tags": ["ciso", "leadership", "career"]
+  },
+  {
+    "name": "Tim Ferriss",
+    "slug": "tim-ferriss",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@timferriss",
+    "id": "",
+    "category": "interviews",
+    "description": "Long-form interviews with world-class performers including security experts",
+    "tags": ["interviews", "long-form"]
+  },
+  {
+    "name": "[un]prompted",
+    "slug": "unprompted",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@unpaborated",
+    "id": "",
+    "category": "ai-security",
+    "description": "AI and security conference talks from leading researchers",
+    "tags": ["ai", "research", "conference"]
+  },
+  {
     "name": "Cybersecurity Playlist",
     "slug": "cybersecurity-playlist",
     "type": "playlist",
+    "youtube_url": "https://www.youtube.com/playlist?list=PLlPkFwQHxYE5n02SOQKzZHz1UXqwrZT68",
     "id": "PLlPkFwQHxYE5n02SOQKzZHz1UXqwrZT68",
-    "rss_url": "https://www.youtube.com/feeds/videos.xml?playlist_id=PLlPkFwQHxYE5n02SOQKzZHz1UXqwrZT68",
     "category": "mixed",
     "description": "Curated cybersecurity video playlist",
     "tags": ["curated", "mixed"]

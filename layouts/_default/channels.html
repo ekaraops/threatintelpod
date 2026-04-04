@@ -1,0 +1,42 @@
+{{ define "main" }}
+<section class="page-header">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    <p class="page-description">{{ .Description }}</p>
+  </div>
+</section>
+
+<section class="channels-section">
+  <div class="container">
+    <div class="channels-grid">
+      {{ range $.Site.Data.feeds }}
+      <a href="{{ .youtube_url }}" target="_blank" rel="noopener noreferrer" class="channel-card">
+        <div class="channel-card-header">
+          <div class="channel-icon">
+            {{ if eq .category "threat-intelligence" }}&#x1f6a8;{{ end }}
+            {{ if eq .category "news" }}&#x1f4f0;{{ end }}
+            {{ if eq .category "defense" }}&#x1f6e1;{{ end }}
+            {{ if eq .category "education" }}&#x1f393;{{ end }}
+            {{ if eq .category "leadership" }}&#x1f4bc;{{ end }}
+            {{ if eq .category "interviews" }}&#x1f399;{{ end }}
+            {{ if eq .category "ai-security" }}&#x1f916;{{ end }}
+            {{ if eq .category "mixed" }}&#x1f4cb;{{ end }}
+          </div>
+          <span class="channel-type-badge">{{ .type }}</span>
+        </div>
+        <h3 class="channel-name">{{ .name }}</h3>
+        <p class="channel-description">{{ .description }}</p>
+        <div class="channel-tags">
+          {{ range .tags }}
+          <span class="channel-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+        <div class="channel-cta">
+          View on YouTube &rarr;
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
