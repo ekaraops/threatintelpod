@@ -21,7 +21,7 @@
       <link>{{ .Permalink }}</link>
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
       <guid isPermaLink="true">{{ .Permalink }}</guid>
-      <description>{{ with .Params.description }}{{ . }}{{ else }}AI-generated summary from {{ .Params.channel }}{{ end }}</description>
+      <description>{{ with .Params.description }}{{ . }}{{ else }}AI-generated summary from {{ .Params.channel }}{{ end }}{{ with .Params.youtube_url }} | Original: {{ . }}{{ end }}</description>
       {{- with .Params.channel }}
       <category>{{ . }}</category>
       {{- end }}
