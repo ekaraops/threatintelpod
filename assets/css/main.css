@@ -130,6 +130,46 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 16px;
 }
 
+.btn-rss {
+  background: transparent;
+  color: var(--accent-orange);
+  border: 2px solid var(--accent-orange);
+  padding: 10px 24px;
+}
+
+.btn-rss:hover {
+  background: var(--accent-orange);
+  color: var(--bg-primary);
+  box-shadow: 0 0 24px rgba(255, 159, 67, 0.3);
+  transform: translateY(-1px);
+}
+
+.rss-icon {
+  flex-shrink: 0;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-rss {
+  display: flex;
+  align-items: center;
+  color: var(--accent-orange) !important;
+  padding: 6px 8px !important;
+}
+
+.nav-rss:hover {
+  background: rgba(255, 159, 67, 0.12) !important;
+}
+
+.nav-rss svg {
+  fill: var(--accent-orange);
+}
+
 /* ============================================
    HEADER
    ============================================ */
