@@ -2,12 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tags/detection/</loc>
-    <lastmod>2026-04-01T10:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/defense/</loc>
+    <lastmod>2026-04-04T01:19:44+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-04-04-defensive-podcasts-defensive-security-podcast-episode-343/</loc>
+    <lastmod>2026-04-04T01:19:44+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/episodes/</loc>
+    <lastmod>2026-04-04T01:19:44+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-04-04T01:19:44+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-04-04T01:19:44+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-04-03-security-weekly-nation-state-crypto-heists-explained/</loc>
+    <lastmod>2026-04-03T22:00:46+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/tags/news/</loc>
+    <lastmod>2026-04-03T22:00:46+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-04-03-sans-isc-sans-stormcast-friday-april-3rd-2026-vite-exploits-openssh-1/</loc>
+    <lastmod>2026-04-03T00:14:01+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/tags/threat-intelligence/</loc>
+    <lastmod>2026-04-03T00:14:01+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-04-02-defensive-podcasts-balancing-false-positives-amp-fale-negatives/</loc>
+    <lastmod>2026-04-02T12:00:02+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-04-02-sans-isc-sans-stormcast-thursday-april-2nd-2026-script-removing-ads-m/</loc>
+    <lastmod>2026-04-02T01:02:31+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/tags/detection/</loc>
     <lastmod>2026-04-01T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -22,18 +72,8 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2026-04-01T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/tags/threat-intelligence/</loc>
-    <lastmod>2026-04-01T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2026-04-01T10:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/episodes/2026-04-01-risky-business-risky-business-831-the-ai-bugpocalypse-begins/</loc>
+    <lastmod>2026-04-01T05:49:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -57,6 +97,41 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>http://localhost:1313/episodes/2026-03-27-risky-business-soap-box-red-teaming-ai-systems-with-specterops/</loc>
+    <lastmod>2026-03-27T01:17:48+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/tags/cybersecurity/</loc>
+    <lastmod>2026-03-26T05:54:56-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-03-26-unprompted-daniel-miessler-anatomy-of-an-agentic-personal-ai-infrastruc/</loc>
+    <lastmod>2026-03-26T05:54:56-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-03-25-unprompted-heather-adkins-four-flynn-evaluating-threats-automating-defe/</loc>
+    <lastmod>2026-03-25T06:23:50-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-03-25-unprompted-joshua-saxe-the-hard-part-isn-t-building-the-agent-measuring/</loc>
+    <lastmod>2026-03-25T06:23:46-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-03-25-unprompted-nicholas-carlini-black-hat-llms-un-prompted-2026/</loc>
+    <lastmod>2026-03-25T06:22:46-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-03-25-unprompted-dan-guido-200-bugs-week-engineer-how-we-rebuilt-trail-of-bit/</loc>
+    <lastmod>2026-03-25T06:21:42-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>http://localhost:1313/tags/architecture/</loc>
     <lastmod>2026-03-21T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -74,6 +149,61 @@
   </url><url>
     <loc>http://localhost:1313/tags/zero-trust/</loc>
     <lastmod>2026-03-21T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-03-19-dr-eric-cole-building-a-modern-ciso-career-in-cybersecurity-guest-jesse-s/</loc>
+    <lastmod>2026-03-19T06:00:06-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-03-17-security-now-cisa-s-free-internet-scanning-malware-disguised-as-a-vpn/</loc>
+    <lastmod>2026-03-17T19:54:47-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-03-08-defensive-podcasts-cyber-security-u0026-infosec-defensive-security-podcast-episode-341/</loc>
+    <lastmod>2026-03-08T18:07:54-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/tags/education/</loc>
+    <lastmod>2026-03-05T18:30:10+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-03-05-security-now-the-call-is-coming-from-inside-the-house-live-from-zero-trus/</loc>
+    <lastmod>2026-03-05T18:30:10+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2026-02-26-security-weekly-a-cra-resource-ai-is-taking-over-cybersecurity-psw-915/</loc>
+    <lastmod>2026-02-26T14:00:02-08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2025-12-08-cybersecurity-playlist-agents-at-the-door-vetting-non-human-identities-in-external-/</loc>
+    <lastmod>2025-12-08T17:01:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/tags/mixed/</loc>
+    <lastmod>2025-12-08T17:01:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2025-09-16-tim-ferriss-one-of-the-scariest-hackers-i-ve-ever-met-pablos-holman/</loc>
+    <lastmod>2025-09-16T16:46:40-07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2025-09-08-cybersecurity-playlist-ot-on-the-frontlines-threat-intelligence-you-can-t-ignore-da/</loc>
+    <lastmod>2025-09-08T16:00:35+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/episodes/2025-05-12-security-weekly-a-cra-resource-mapping-the-modern-attack-surface-fintech-s-evolving-risk-fr/</loc>
+    <lastmod>2025-05-12T09:00:08-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>

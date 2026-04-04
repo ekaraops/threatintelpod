@@ -130,6 +130,46 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 16px;
 }
 
+.btn-rss {
+  background: transparent;
+  color: var(--accent-orange);
+  border: 2px solid var(--accent-orange);
+  padding: 10px 24px;
+}
+
+.btn-rss:hover {
+  background: var(--accent-orange);
+  color: var(--bg-primary);
+  box-shadow: 0 0 24px rgba(255, 159, 67, 0.3);
+  transform: translateY(-1px);
+}
+
+.rss-icon {
+  flex-shrink: 0;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-rss {
+  display: flex;
+  align-items: center;
+  color: var(--accent-orange) !important;
+  padding: 6px 8px !important;
+}
+
+.nav-rss:hover {
+  background: rgba(255, 159, 67, 0.12) !important;
+}
+
+.nav-rss svg {
+  fill: var(--accent-orange);
+}
+
 /* ============================================
    HEADER
    ============================================ */
@@ -157,8 +197,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
-.logo-icon {
-  font-size: 1.5rem;
+.logo-svg {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
 }
 
 .logo-text {
@@ -226,10 +268,29 @@ h1, h2, h3, h4, h5, h6 {
   padding: 80px 0 60px;
   background: linear-gradient(180deg, rgba(0, 255, 136, 0.03) 0%, transparent 60%);
   border-bottom: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.hero-layout {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 .hero-content {
-  max-width: 700px;
+  max-width: 600px;
+  flex: 1;
+}
+
+.hero-visual {
+  flex: 1;
+  max-width: 500px;
+  flex-shrink: 0;
+}
+
+.hero-visual img {
+  width: 100%;
+  height: auto;
 }
 
 .hero-title {
@@ -706,6 +767,110 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
+   CHANNELS PAGE
+   ============================================ */
+.channels-section {
+  padding: 48px 0 80px;
+}
+
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.channel-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.channel-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-4px);
+  color: inherit;
+}
+
+.channel-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.channel-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.channel-type-badge {
+  padding: 3px 10px;
+  background: rgba(0, 180, 216, 0.12);
+  color: var(--accent-cyan);
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: var(--radius-sm);
+}
+
+.channel-name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.channel-description {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.channel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.channel-tag {
+  padding: 3px 10px;
+  background: rgba(0, 255, 136, 0.08);
+  color: var(--accent-green-dim);
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 500;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 255, 136, 0.15);
+}
+
+.channel-cta {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: var(--accent-green);
+  font-weight: 600;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.channel-card:hover .channel-cta {
+  color: var(--accent-cyan);
+}
+
+/* ============================================
    EMPTY STATE
    ============================================ */
 .empty-state {
@@ -800,6 +965,15 @@ h1, h2, h3, h4, h5, h6 {
 
   .stat-number {
     font-size: 1.5rem;
+  }
+
+  .hero-layout {
+    flex-direction: column;
+  }
+
+  .hero-visual {
+    max-width: 350px;
+    margin: 0 auto;
   }
 
   .episode-grid {
