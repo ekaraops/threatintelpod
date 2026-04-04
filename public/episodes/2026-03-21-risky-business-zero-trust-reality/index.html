@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zero Trust in Practice: Beyond the Marketing Buzz | ThreatIntelPod</title>
+<meta name="description" content="Patrick Gray and guest discuss what Zero Trust actually looks like in production environments, common pitfalls, and a practical implementation roadmap for security teams.">
+<meta name="author" content="ThreatIntelPod">
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zero Trust in Practice: Beyond the Marketing Buzz">
+<meta property="og:description" content="Patrick Gray and guest discuss what Zero Trust actually looks like in production environments, common pitfalls, and a practical implementation roadmap for security teams.">
+<meta property="og:url" content="http://localhost:1313/episodes/2026-03-21-risky-business-zero-trust-reality/">
+<meta property="og:site_name" content="ThreatIntelPod">
+
+<meta property="og:image" content="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zero Trust in Practice: Beyond the Marketing Buzz">
+<meta name="twitter:description" content="Patrick Gray and guest discuss what Zero Trust actually looks like in production environments, common pitfalls, and a practical implementation roadmap for security teams.">
+
+
+<link rel="canonical" href="http://localhost:1313/episodes/2026-03-21-risky-business-zero-trust-reality/">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+
+
+
+
+</head>
+<body>
+  <header class="site-header">
+  <div class="container">
+    <a href="http://localhost:1313/" class="site-logo">
+      <span class="logo-icon">&#x1f6e1;</span>
+      <span class="logo-text">ThreatIntelPod</span>
+    </a>
+    <nav class="site-nav">
+      
+      <a href="/episodes/" class="nav-link">Episodes</a>
+      
+      <a href="/channels/" class="nav-link">Channels</a>
+      
+      <a href="/about/" class="nav-link">About</a>
+      
+    </nav>
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+  <main>
+    
+<article class="episode-detail">
+  <div class="episode-hero">
+    <div class="container">
+      <div class="episode-hero-content">
+        <div class="episode-meta-bar">
+          
+          <a href="http://localhost:1313/channels/risky-business/" class="meta-channel">Risky Business</a>
+          
+          
+          <span class="meta-badge">strategy</span>
+          
+          <time class="meta-date" datetime="2026-03-21">March 21, 2026</time>
+        </div>
+        <h1 class="episode-title">Zero Trust in Practice: Beyond the Marketing Buzz</h1>
+        
+        <p class="episode-description">Patrick Gray and guest discuss what Zero Trust actually looks like in production environments, common pitfalls, and a practical implementation roadmap for security teams.</p>
+        
+        
+        <a href="https://www.youtube.com/watch?v=example456" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-youtube">
+          &#x25b6; Watch Original Episode
+        </a>
+        
+      </div>
+      
+      <div class="episode-hero-thumbnail">
+        <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Zero Trust in Practice: Beyond the Marketing Buzz">
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="episode-content">
+    <div class="container container-narrow">
+      <h2 id="tldr-too-long-didnt-read">TL;DR (Too Long, Didn&rsquo;t Read)</h2>
+<ul>
+<li>Zero Trust is not a product you buy - it is an architecture philosophy requiring incremental implementation</li>
+<li>Start with identity and device trust as the foundation, not network microsegmentation</li>
+<li>Most organizations trying to do Zero Trust fail because they attempt everything at once</li>
+<li>Conditional access policies in your identity provider deliver the highest ROI as a first step</li>
+<li>Legacy applications are the biggest blocker and require application-level proxies or wrappers</li>
+<li>Full Zero Trust maturity takes 3-5 years for mid-to-large enterprises</li>
+</ul>
+<h2 id="new-tools-techniques-and-tactics">New Tools, Techniques, and Tactics</h2>
+<ul>
+<li><strong>ZTNA (Zero Trust Network Access)</strong> solutions replacing traditional VPN for remote access</li>
+<li><strong>Continuous authentication</strong> using behavioral biometrics and device posture checks</li>
+<li><strong>Software-defined perimeters</strong> that make applications invisible to unauthorized users</li>
+<li><strong>Identity-aware proxies</strong> (like BeyondCorp Enterprise, Zscaler Private Access) for legacy app access</li>
+<li><strong>FIDO2/passkeys</strong> adoption as the preferred MFA method in Zero Trust architectures</li>
+<li><strong>Microsegmentation tools</strong> (Illumio, Guardicore) for east-west traffic control in data centers</li>
+</ul>
+<h2 id="detection--defense-insights">Detection &amp; Defense Insights</h2>
+<ul>
+<li>Implement <strong>device trust scoring</strong> that continuously evaluates endpoint health before granting access</li>
+<li>Monitor <strong>authentication anomalies</strong>: impossible travel, unusual times, new device + sensitive resource</li>
+<li>Deploy <strong>just-in-time (JIT) access</strong> for admin privileges instead of standing permissions</li>
+<li>Use <strong>identity threat detection (ITDR)</strong> to catch token theft, session hijacking, and MFA bypass</li>
+<li>Log all access decisions centrally to detect policy gaps and shadow access patterns</li>
+<li>Enforce <strong>least privilege</strong> at the application layer, not just network layer</li>
+</ul>
+<h2 id="real-world-examples--stories">Real-World Examples &amp; Stories</h2>
+<ul>
+<li>A Fortune 500 company spent $15M on microsegmentation but saw minimal security improvement because identity was still password-only</li>
+<li>Google&rsquo;s BeyondCorp journey took 8 years from concept to full deployment across all applications</li>
+<li>A mid-market SaaS company achieved meaningful Zero Trust in 12 months by focusing only on identity and critical apps</li>
+<li>Guest described an incident where stolen VPN credentials gave an attacker full network access, which would have been prevented by device-aware conditional access</li>
+<li>A healthcare organization successfully segmented their medical devices using NAC + microsegmentation after a near-miss incident</li>
+</ul>
+<h2 id="research-references--resources">Research, References &amp; Resources</h2>
+<ul>
+<li><strong>NIST SP 800-207</strong> - the foundational Zero Trust Architecture publication</li>
+<li><strong>CISA Zero Trust Maturity Model</strong> - practical maturity framework for government and enterprise</li>
+<li><strong>Google BeyondCorp Papers</strong> - the original research papers that popularized Zero Trust concepts</li>
+<li><strong>Forrester Zero Trust eXtended (ZTX) Framework</strong> - maps vendors and capabilities</li>
+<li><strong>Gartner SASE Framework</strong> - convergence of network and security services aligned with Zero Trust</li>
+</ul>
+<h2 id="key-industry-insights--trends">Key Industry Insights &amp; Trends</h2>
+<ul>
+<li>85% of organizations claim to be implementing Zero Trust, but less than 15% have achieved meaningful maturity</li>
+<li>Identity is now the primary attack vector, surpassing network-based attacks</li>
+<li>The convergence of SASE and Zero Trust is driving vendor consolidation</li>
+<li>Cloud-native organizations have a significant head start because they never had traditional perimeters</li>
+<li>Compliance frameworks are beginning to reference Zero Trust principles directly</li>
+<li>The talent gap for Zero Trust implementation is significant and growing</li>
+</ul>
+<h2 id="business--risk-implications">Business &amp; Risk Implications</h2>
+<ul>
+<li><strong>Cost</strong>: Initial investment is significant but reduces long-term security tool sprawl and operational overhead</li>
+<li><strong>Productivity</strong>: Done right, Zero Trust improves user experience by eliminating VPN friction</li>
+<li><strong>Compliance</strong>: Positions organizations ahead of emerging regulatory requirements</li>
+<li><strong>M&amp;A readiness</strong>: Zero Trust architectures simplify integration of acquired companies</li>
+<li><strong>Remote work</strong>: Enables secure access from anywhere without backhauling traffic through HQ</li>
+<li><strong>Insurance</strong>: Cyber insurers increasingly offer premium reductions for organizations with mature Zero Trust controls</li>
+</ul>
+<h2 id="opinions-vs-facts">Opinions vs Facts</h2>
+<p><strong>Verified Facts:</strong></p>
+<ul>
+<li>NIST SP 800-207 defines Zero Trust as an architecture, not a product or technology</li>
+<li>Google&rsquo;s BeyondCorp has been in production since approximately 2014</li>
+<li>Identity-based attacks increased 47% year-over-year per CrowdStrike threat report</li>
+</ul>
+<p><strong>Opinions &amp; Predictions:</strong></p>
+<ul>
+<li>Guest believes VPNs will be fully obsolete in enterprise by 2028</li>
+<li>Patrick argues that most ZTNA vendors are just rebranded VPNs with better marketing</li>
+<li>Speaker predicts that AI-driven continuous authentication will replace traditional MFA within 5 years</li>
+</ul>
+<h2 id="contradictions--debates">Contradictions &amp; Debates</h2>
+<ul>
+<li><strong>Network vs Identity first</strong>: traditional security architects want microsegmentation first, modern practitioners advocate identity-first approach</li>
+<li><strong>Build vs Buy</strong>: some argue best-of-breed tools integrated is superior, others say platform consolidation reduces complexity</li>
+<li><strong>Zero Trust completeness</strong>: guests disagreed on whether Zero Trust can be fully achieved or if it is an asymptotic goal</li>
+</ul>
+<h2 id="actionable-takeaways">Actionable Takeaways</h2>
+<ul>
+<li><strong>Today</strong>: Audit your conditional access policies in your IdP (Entra ID, Okta, etc.) and ensure MFA is enforced on all admin and sensitive access</li>
+<li><strong>This week</strong>: Inventory all VPN-only applications and categorize by criticality for ZTNA migration prioritization</li>
+<li><strong>This month</strong>: Deploy device posture checks as a condition for accessing critical applications</li>
+<li><strong>This quarter</strong>: Implement JIT access for all administrative privileges and eliminate standing admin accounts</li>
+<li><strong>6-month goal</strong>: Migrate top 10 most-accessed applications from VPN to ZTNA or identity-aware proxy</li>
+<li><strong>Ongoing</strong>: Measure and report Zero Trust maturity using the CISA maturity model quarterly</li>
+</ul>
+
+    </div>
+  </div>
+
+  <nav class="episode-nav">
+    <div class="container">
+      
+      
+      <a href="http://localhost:1313/episodes/2026-03-28-darknet-diaries-ransomware-negotiations/" class="nav-next">
+        <span class="nav-label">Next &rarr;</span>
+        <span class="nav-title">Inside Ransomware Negotiations: What CISOs Need to …</span>
+      </a>
+      
+    </div>
+  </nav>
+</article>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="logo-icon">&#x1f6e1;</span>
+        <span class="logo-text">ThreatIntelPod</span>
+        <p class="footer-tagline">AI-powered cybersecurity podcast summaries for CISOs and security leaders</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigate</h4>
+        
+        <a href="/episodes/">Episodes</a>
+        
+        <a href="/channels/">Channels</a>
+        
+        <a href="/about/">About</a>
+        
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 ThreatIntelPod. Summaries are AI-generated and may contain inaccuracies.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.mobile-menu-toggle')?.addEventListener('click', function() {
+  document.querySelector('.site-nav').classList.toggle('open');
+  this.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>
