@@ -1,32 +1,31 @@
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <rss version="2.0"
   xmlns:atom="http://www.w3.org/2005/Atom"
-  xmlns:media="http://search.yahoo.com/mrss/"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>{{ .Site.Title }} - Cybersecurity Podcast Summaries</title>
+    <title>{{ .Site.Title | plainify | htmlEscape }}</title>
     <link>{{ .Site.BaseURL }}episodes/</link>
-    <description>{{ .Site.Params.description }}</description>
+    <description>{{ .Site.Params.description | plainify | htmlEscape }}</description>
     <language>{{ .Site.LanguageCode }}</language>
     <lastBuildDate>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
     <atom:link href="{{ .Site.BaseURL }}episodes/index.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>{{ .Site.BaseURL }}images/logo.svg</url>
-      <title>{{ .Site.Title }}</title>
+      <title>{{ .Site.Title | plainify | htmlEscape }}</title>
       <link>{{ .Site.BaseURL }}</link>
     </image>
     {{- range (where .Site.RegularPages "Section" "episodes").ByDate.Reverse }}
     <item>
-      <title>{{ .Title }}</title>
+      <title>{{ .Title | plainify | htmlEscape }}</title>
       <link>{{ .Permalink }}</link>
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
       <guid isPermaLink="true">{{ .Permalink }}</guid>
-      <description>{{ with .Params.description }}{{ . }}{{ else }}AI-generated summary from {{ .Params.channel }}{{ end }}{{ with .Params.youtube_url }} | Original: {{ . }}{{ end }}</description>
+      <description>{{ with .Params.description }}{{ . | plainify | htmlEscape }}{{ else }}AI-generated summary from {{ $.Params.channel | plainify | htmlEscape }}{{ end }}{{ with .Params.youtube_url }} | Original: {{ . }}{{ end }}</description>
       {{- with .Params.channel }}
-      <category>{{ . }}</category>
+      <category>{{ . | plainify | htmlEscape }}</category>
       {{- end }}
       {{- with .Params.category }}
-      <category>{{ . }}</category>
+      <category>{{ . | htmlEscape }}</category>
       {{- end }}
       {{- with .Params.youtube_url }}
       <comments>{{ . }}</comments>
@@ -35,15 +34,6 @@
       {{- with .Params.thumbnail }}
       <media:thumbnail url="{{ . }}"/>
       {{- end }}
-      <content:encoded><![CDATA[
-        {{- with .Params.youtube_url }}
-        <p><strong>Original Episode:</strong> <a href="{{ . }}">Watch on YouTube</a></p>
-        {{- end }}
-        {{- with .Params.channel }}
-        <p><strong>Channel:</strong> {{ . }}</p>
-        {{- end }}
-        {{ .Content }}
-      ]]></content:encoded>
     </item>
     {{- end }}
   </channel>
