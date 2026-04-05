@@ -88,5 +88,15 @@
     "category": "mixed",
     "description": "Curated cybersecurity video playlist",
     "tags": ["curated", "mixed"]
+  },
+  {
+    "name": "Darknet Diaries",
+    "slug": "darknet-diaries",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@JackRhysider",
+    "id": "UCMIqrmh2lMdzhlCPK5ahsAg",
+    "category": "stories",
+    "description": "True stories from the dark side of the Internet by Jack Rhysider",
+    "tags": ["stories", "incidents", "hacking"]
   }
 ]
