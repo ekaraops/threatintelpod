@@ -7,7 +7,7 @@ channel_slug: "darknet-diaries"
 category: "stories"
 youtube_url: "https://darknetdiaries.com/episode/171/"
 video_id: "dd-171"
-thumbnail: "https://i.ytimg.com/vi/placeholder/sddefault.jpg"
+thumbnail: "https://f.prxu.org/7057/043c723a-13a1-48dc-8977-3ff2621e8a92/images/659bbaea-c309-4260-95fc-909108e3852e/blastingsound.jpg"
 description: "AI-generated summary of EP 171: Melody Fraud from Darknet Diaries"
 tags: ["stories", "darknet-diaries"]
 ---
