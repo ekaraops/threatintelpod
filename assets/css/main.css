@@ -312,31 +312,93 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 580px;
 }
 
-.hero-stats {
-  display: flex;
-  gap: 40px;
-  margin-top: 48px;
-  padding-top: 32px;
+/* ============================================
+   SOURCES TICKER
+   ============================================ */
+.sources-ticker {
   border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  padding: 20px 0;
+  overflow: hidden;
+  position: relative;
 }
 
-.stat {
+.ticker-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  padding: 0 24px;
+  background: linear-gradient(90deg, var(--bg-secondary) 80%, transparent 100%);
+  z-index: 2;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent-green);
+  white-space: nowrap;
 }
 
-.stat-number {
+.ticker-track {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.ticker-scroll {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: max-content;
+  animation: ticker-slide 40s linear infinite;
+}
+
+.ticker-item {
   font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  padding: 0 20px;
+  transition: color 0.3s;
+}
+
+.ticker-item:hover {
   color: var(--accent-green);
 }
 
-.stat-label {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.ticker-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+@keyframes ticker-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.sources-ticker:hover .ticker-scroll {
+  animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .ticker-label {
+    display: none;
+  }
+  .ticker-scroll {
+    animation-duration: 25s;
+  }
 }
 
 /* ============================================

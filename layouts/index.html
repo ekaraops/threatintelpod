@@ -15,21 +15,74 @@
     <div class="hero-visual">
       <img src="{{ .Site.BaseURL }}images/hero-visual.svg" alt="Cybersecurity threat intelligence network">
     </div>
-    <div class="hero-stats">
-      {{ $episodes := where .Site.RegularPages "Section" "episodes" }}
-      <div class="stat">
-        <span class="stat-number">{{ len $episodes }}</span>
-        <span class="stat-label">Episodes</span>
-      </div>
-      <div class="stat">
-        {{ $channels := $episodes.GroupByParam "channel" }}
-        <span class="stat-number">{{ len $channels }}</span>
-        <span class="stat-label">Channels</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">10+</span>
-        <span class="stat-label">Sources</span>
-      </div>
+  </div>
+</section>
+
+<section class="sources-ticker">
+  <div class="ticker-label">Sources we cover</div>
+  <div class="ticker-track">
+    <div class="ticker-scroll">
+      <span class="ticker-item">Darknet Diaries</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">SANS Internet Storm Center</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Risky Business</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">[un]prompted</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Security Weekly</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">BSides Conferences</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Security Now</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Defensive Security Podcast</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">DEF CON Talks</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Black Hat</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">CyberWire</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">CISO Series</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Hacking Humans</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Smashing Security</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Malicious Life</span>
+      <span class="ticker-dot"></span>
+      <!-- Duplicate for seamless loop -->
+      <span class="ticker-item">Darknet Diaries</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">SANS Internet Storm Center</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Risky Business</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">[un]prompted</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Security Weekly</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">BSides Conferences</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Security Now</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Defensive Security Podcast</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">DEF CON Talks</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Black Hat</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">CyberWire</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">CISO Series</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Hacking Humans</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Smashing Security</span>
+      <span class="ticker-dot"></span>
+      <span class="ticker-item">Malicious Life</span>
+      <span class="ticker-dot"></span>
     </div>
   </div>
 </section>
