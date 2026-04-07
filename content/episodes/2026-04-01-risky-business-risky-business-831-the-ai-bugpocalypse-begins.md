@@ -10,6 +10,15 @@ video_id: "PGmcgt8vMH8"
 thumbnail: "https://i.ytimg.com/vi/PGmcgt8vMH8/sddefault.jpg"
 description: "AI-generated summary of Risky Business (831): The AI bugpocalypse begins from Risky Business"
 tags: ["news"]
+industries: ["Technology", "Software Development"]
+geos: ["Global", "North Korea"]
+threats: ["Supply Chain Attack", "AI-Driven Vulnerability Research", "Trojanized Software"]
+ciso_insights:
+  - "Implement strict allow-listing and least privilege principles to counter AI-accelerated attacks."
+  - "Monitor for unusual 200 OK responses on non-existent file paths to detect web shells."
+  - "Audit third-party JavaScript dependencies for suspicious secondary dependencies like plaincrypto.js."
+  - "Avoid relying on legacy edge devices as primary Identity Providers to mitigate credential risks."
+  - "Deploy AI-driven automated threat hunting tools to match the speed of automated vulnerability discovery."
 ---
 
 # Podcast Summary: Risky Business (831) - The AI Bugpocalypse Begins

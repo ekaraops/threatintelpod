@@ -10,6 +10,15 @@ video_id: "jTiJpV9W1D8"
 thumbnail: "https://i.ytimg.com/vi/jTiJpV9W1D8/sddefault.jpg"
 description: "AI-generated summary of Soap Box: Red teaming AI systems with SpecterOps from Risky Business"
 tags: ["news"]
+industries: ["Technology", "Software Development"]
+geos: ["Global"]
+threats: ["Prompt Injection", "Identity Theft", "Supply Chain Attack"]
+ciso_insights:
+  - "Implement strict least-privilege controls for all non-human AI identities and service accounts."
+  - "Expand red teaming scope from model safety to the entire integrated system of systems."
+  - "Monitor and map identity attack paths that connect AI agents to sensitive cloud environments."
+  - "Enforce allow-listing for executable code and network connections to counter machine-speed attacks."
+  - "Audit AI-integrated developer tools and browsers to prevent session cookie and credential theft."
 ---
 
 ## TL;DR (Too Long, Didn't Read)

@@ -10,6 +10,15 @@ video_id: "dd-166"
 thumbnail: "https://f.prxu.org/7057/cc53b5e9-f5c3-46ba-8692-f0ef912e5562/images/5857582f-7fb9-4f75-b817-396893c7b8fb/window.jpg"
 description: "AI-generated summary of EP 166: Maxie from Darknet Diaries"
 tags: ["stories", "darknet-diaries"]
+industries: ["Logistics", "Critical Infrastructure", "Technology"]
+geos: ["Global"]
+threats: ["Social Engineering", "Physical Breach", "Insider Threat"]
+ciso_insights:
+  - "Implement strict identity verification protocols to prevent pretexting attacks."
+  - "Audit physical access points like loading docks and windows regularly."
+  - "Secure all physical assets including vehicle keys and server rack locks."
+  - "Establish rigorous rules of engagement for all penetration testing activities."
+  - "Integrate physical security measures with digital defense-in-depth strategies."
 ---
 
 ## TL;DR (Too Long, Didn't Read)

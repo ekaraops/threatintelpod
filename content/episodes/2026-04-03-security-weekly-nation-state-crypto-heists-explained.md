@@ -10,6 +10,15 @@ video_id: "gWH1bCNoDYs"
 thumbnail: "https://i.ytimg.com/vi/gWH1bCNoDYs/sddefault.jpg"
 description: "AI-generated summary of Nation-State Crypto Heists Explained from Security Weekly"
 tags: ["news"]
+industries: ["Finance", "Technology"]
+geos: ["Global", "North Korea"]
+threats: ["Nation-State Actors", "Credential Theft", "Automated Financial Fraud"]
+ciso_insights:
+  - "Implement strict hardware-based protections for all administrative keys."
+  - "Monitor for the creation of new, unverified domains and wallets in your ecosystem."
+  - "Deploy behavioral analytics to detect rapid, automated transaction sequences."
+  - "Audit administrative access patterns to identify reconnaissance or 'casing' activities."
+  - "Transition from static credentials to short-lived, dynamic authentication tokens."
 ---
 
 ## TL;DR (Too Long, Didn't Read)

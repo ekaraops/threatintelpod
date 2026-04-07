@@ -10,6 +10,15 @@ video_id: "3lRlZW9-eKk"
 thumbnail: "https://i.ytimg.com/vi/3lRlZW9-eKk/sddefault.jpg"
 description: "AI-generated summary of Defensive Security Podcast Episode 341 from Defensive Podcasts -  Cyber Security \u0026 Infosec."
 tags: ["cybersecurity"]
+industries: ["Technology", "Software"]
+geos: ["Global", "US"]
+threats: ["AI-Assisted Attacks", "Supply Chain", "Malware-as-a-Service"]
+ciso_insights:
+  - "Restrict internet-facing management interfaces on all network appliances to prevent automated exploitation."
+  - "Implement strict ownership and inventory controls for all API and Model Context Protocol endpoints."
+  - "Enhance monitoring for AI agent identities to protect high-value keys and configuration data."
+  - "Verify software legitimacy beyond Extended Validation certificates to counter sophisticated malware-as-a-service."
+  - "Audit open-source dependencies to mitigate risks stemming from fragile software supply chain infrastructure."
 ---
 
 # Podcast Summary: Defensive Security Podcast Episode 341

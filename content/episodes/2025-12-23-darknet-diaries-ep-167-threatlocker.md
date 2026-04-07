@@ -10,6 +10,15 @@ video_id: "dd-167"
 thumbnail: "https://f.prxu.org/7057/a1440dd8-077d-4bb9-b380-0162c98ab68d/images/2ddb7796-3ff4-41e2-b4d6-8838f0b9c398/threatlocker-sq.jpg"
 description: "AI-generated summary of EP 167: Threatlocker from Darknet Diaries"
 tags: ["stories", "darknet-diaries"]
+industries: ["Manufacturing", "Technology"]
+geos: ["Global"]
+threats: ["Ransomware", "Zero-day Exploits", "Lateral Movement"]
+ciso_insights:
+  - "Implement a default-deny security posture to prevent unauthorized application execution."
+  - "Adopt a zero-trust architecture to eliminate implicit trust within the network perimeter."
+  - "Deploy layered defense-in-depth strategies to mitigate single-point failures in security tools."
+  - "Enforce multi-factor authentication on all VPN connections to prevent credential-based access."
+  - "Establish a structured device recovery workflow to manage infected assets during incident response."
 ---
 
 ## TL;DR (Too Long, Didn't Read)

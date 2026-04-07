@@ -10,6 +10,15 @@ video_id: "2lxRXEoH-2k"
 thumbnail: "https://i.ytimg.com/vi/2lxRXEoH-2k/sddefault.jpg"
 description: "AI-generated summary of SANS Stormcast Thursday, April 2nd, 2026: Script Removing ADS/MotW; Google Chrome 0-Day; iOS/iP… from SANS Internet Storm Center"
 tags: ["threat-intelligence"]
+industries: ["Technology", "Telecommunications"]
+geos: ["Global"]
+threats: ["Exploit Kits", "CSRF", "Malware"]
+ciso_insights:
+  - "Monitor PowerShell activity for commands targeting the removal of Zone.Identifier streams."
+  - "Prioritize immediate patching of Google Chrome to mitigate Web GPU vulnerabilities."
+  - "Enforce MDM policies to ensure all mobile devices are updated to iOS/iPadOS 18.7."
+  - "Audit all network edge hardware, specifically Asus routers, for firmware vulnerabilities."
+  - "Implement file integrity monitoring to detect files that have lost their Mark of the Web status."
 ---
 
 ## TL;DR (Too Long, Didn't Read)
