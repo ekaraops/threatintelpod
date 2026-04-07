@@ -20,8 +20,33 @@
         <span class="card-date">{{ .Date.Format "Jan 2, 2006" }}</span>
       </div>
       <h3 class="card-title">{{ .Title }}</h3>
-      {{ with .Params.description }}
-      <p class="card-excerpt">{{ . | truncate 120 }}</p>
+
+      {{/* CISO Tags */}}
+      {{ if or .Params.industries .Params.threats .Params.geos }}
+      <div class="card-tags">
+        {{ range .Params.threats }}
+        <span class="ctag ctag-threat">{{ . }}</span>
+        {{ end }}
+        {{ range .Params.industries }}
+        <span class="ctag ctag-industry">{{ . }}</span>
+        {{ end }}
+        {{ range .Params.geos }}
+        <span class="ctag ctag-geo">{{ . }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      {{/* CISO Quick Insights */}}
+      {{ with .Params.ciso_insights }}
+      <ul class="card-insights">
+        {{ range . }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+      {{ else }}
+        {{ with $.Params.description }}
+        <p class="card-excerpt">{{ . | truncate 120 }}</p>
+        {{ end }}
       {{ end }}
     </div>
   </a>

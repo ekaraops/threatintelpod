@@ -552,6 +552,73 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.6;
 }
 
+/* CISO Tags */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.ctag {
+  padding: 2px 8px;
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.ctag-threat {
+  background: rgba(255, 77, 106, 0.12);
+  color: var(--accent-red);
+  border: 1px solid rgba(255, 77, 106, 0.25);
+}
+
+.ctag-industry {
+  background: rgba(167, 139, 250, 0.12);
+  color: var(--accent-purple);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+}
+
+.ctag-geo {
+  background: rgba(0, 180, 216, 0.12);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 180, 216, 0.25);
+}
+
+/* CISO Quick Insights */
+.card-insights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-insights li {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+}
+
+.card-insights li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  opacity: 0.6;
+}
+
 /* ============================================
    HOW IT WORKS
    ============================================ */
