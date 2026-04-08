@@ -98,5 +98,15 @@
     "category": "stories",
     "description": "True stories from the dark side of the Internet by Jack Rhysider",
     "tags": ["stories", "incidents", "hacking"]
+  },
+  {
+    "name": "CISO Series",
+    "slug": "ciso-series",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@CISOSeries",
+    "id": "UC9ksdhUaDEEyltTxBc2AzfQ",
+    "category": "leadership",
+    "description": "CISO-focused discussions on security leadership, risk, and strategy",
+    "tags": ["ciso", "leadership", "strategy"]
   }
 ]
