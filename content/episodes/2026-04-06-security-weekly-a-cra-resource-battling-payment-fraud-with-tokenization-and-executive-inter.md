@@ -10,15 +10,13 @@ video_id: "zxV7Wdjx2vI"
 thumbnail: "https://i.ytimg.com/vi/zxV7Wdjx2vI/sddefault.jpg"
 description: "AI-generated summary of Battling payment fraud with tokenization and executive interviews from RSAC 2026 - ESW #453 from Security Weekly - A CRA Resource"
 tags: ["cybersecurity"]
-industries: ["Finance", "Retail", "Technology"]
-geos: ["Global"]
-threats: ["Social Engineering", "AI-Driven Scams", "Identity Theft"]
-ciso_insights:
-  - "Implement merchant-specific tokenization to reduce PCI compliance burdens and protect customer data."
-  - "Transition from traditional passwords to FIDO-based passkeys to mitigate phishing risks."
-  - "Apply Zero Trust principles to AI agents by strictly limiting their data access and action permissions."
-  - "Deploy behavioral biometrics to detect automated bots and fraudulent human activity."
-  - "Adopt a hybrid security model that ensures consistent inspection across on-prem, cloud, and browser environments."
+hook: "The perimeter has vanished, replaced by a chaotic battlefield of AI agents and social engineering."
+stings:
+  - "The death of the password"
+  - "AI agents gone rogue"
+  - "Identity as the final fortress"
+card_topic: "Modern + Defense"
+topic_count: 6
 ---
 
 This summary covers the key insights from the *Security Weekly* episode regarding payment fraud, passkeys, AI agents, and hybrid security.

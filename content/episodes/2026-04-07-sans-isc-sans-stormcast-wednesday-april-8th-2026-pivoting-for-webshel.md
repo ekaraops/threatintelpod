@@ -10,15 +10,13 @@ video_id: "OzYtf5zbL6M"
 thumbnail: "https://i.ytimg.com/vi/OzYtf5zbL6M/sddefault.jpg"
 description: "AI-generated summary of SANS Stormcast Wednesday, April 8th, 2026: Pivoting for Webshells; WatchGuard Firebox Patch; Pr… from SANS Internet Storm Center"
 tags: ["threat-intelligence"]
-industries: ["Technology","Software Development"]
-geos: ["Global"]
-threats: ["Web Shells","Kubernetes Exploitation","Spearphishing","Supply Chain"]
-ciso_insights:
-  - "Monitor web directories for any new or unexpected files rather than searching for specific filenames."
-  - "Patch WatchGuard Firebox appliances immediately to prevent arbitrary file execution."
-  - "Audit systems post-patching to ensure no malicious files were planted during the vulnerability window."
-  - "Harden Kubernetes configurations to restrict API access and limit pod permissions to CI/CD secrets."
-  - "Implement advanced phishing protections specifically targeted at developers to prevent credential theft."
+hook: "Hackers are now scavenging the digital graveyards of previous attacks to hijack existing backdoors."
+stings:
+  - "Parasitic attackers hunting old web shells"
+  - "Microsoft Cloud IPs masking massive scans"
+  - "The AI race for zero-day dominance"
+card_topic: "Threat+Intelligence"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

@@ -10,15 +10,13 @@ video_id: "0EM2bfDN13Y"
 thumbnail: "https://i.ytimg.com/vi/0EM2bfDN13Y/sddefault.jpg"
 description: "AI-generated summary of The Call Is Coming From Inside the House - Live From Zero Trust World 2026 from Security Now"
 tags: ["education"]
-industries: ["Technology", "Finance"]
-geos: ["Global"]
-threats: ["Social Engineering", "Credential Theft", "Lateral Movement"]
-ciso_insights:
-  - "Implement Zero Trust architecture to assume the network is already compromised."
-  - "Transition from password-based authentication to passkeys and biometrics."
-  - "Adopt a whitelisting approach to permit only known-good entities and behaviors."
-  - "Deploy micro-segmentation to prevent attackers from moving laterally across the network."
-  - "Utilize AI security agents to monitor user actions and mitigate human error."
+hook: "The greatest threat to your network isn't a hacker in a basement, but the person sitting in the next cubicle."
+stings:
+  - "The death of the password"
+  - "Crypto-fueled extortion empires"
+  - "Trust nothing, verify everything"
+card_topic: "Zero + Trust + Warfare"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

@@ -10,15 +10,13 @@ video_id: "eCp6ixlzyh0"
 thumbnail: "https://i.ytimg.com/vi/eCp6ixlzyh0/sddefault.jpg"
 description: "AI-generated summary of One of The Scariest Hackers I’ve Ever Met — Pablos Holman from Tim Ferriss"
 tags: ["cybersecurity"]
-industries: ["Manufacturing", "Energy", "Technology"]
-geos: ["US", "Global"]
-threats: ["Zero-Click Exploits", "Social Engineering", "Zero-Day Vulnerabilities"]
-ciso_insights:
-  - "Adopt a hacker mindset by questioning the unintended capabilities of all new enterprise software."
-  - "Prioritize the security of physical infrastructure and deep tech assets alongside digital systems."
-  - "Implement extreme lifestyle and device security protocols to mitigate nation-state level threats."
-  - "Minimize the organizational attack surface to reduce exposure to zero-click exploits."
-  - "Monitor for social engineering tactics that target human psychology rather than technical vulnerabilities."
+hook: "The world's most dangerous hackers aren't breaking code; they are breaking the physical foundations of reality."
+stings:
+  - "The energy bottleneck"
+  - "Zero-click nation-state strikes"
+  - "Deep tech's hidden war"
+card_topic: "Hacker+Mindset"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

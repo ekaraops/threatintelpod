@@ -10,15 +10,13 @@ video_id: "wXMrST1GjUk"
 thumbnail: "https://i.ytimg.com/vi/wXMrST1GjUk/sddefault.jpg"
 description: "AI-generated summary of Risky Business (832): Anthropic unveils magical 0day computer God from Risky Business Media"
 tags: ["cybersecurity"]
-industries: ["Technology", "Finance", "Healthcare"]
-geos: ["Global", "US"]
-threats: ["AI Threats", "Supply Chain", "Identity", "Social Engineering"]
-ciso_insights:
-  - "Audit identity verification workflows to ensure remote employees are authenticated through continuous, low-friction re-authentication methods."
-  - "Update security awareness training to include long-term, rapport-based social engineering tactics used on platforms like Slack and LinkedIn."
-  - "Prepare the SOC for a higher volume of vulnerability alerts by shifting focus from manual discovery to rapid AI-driven triage."
-  - "Review developer environments for risks associated with legitimate tools like VS Code and TestFlight being used for malware distribution."
-  - "Standardize codebase architectures to improve the effectiveness of automated AI-driven security auditing and refactoring."
+hook: "Anthropic's new Mythos model is so lethal at finding zero-days that they're keeping it under lock and key."
+stings:
+  - "AI-driven exploit generation"
+  - "North Korean social engineering"
+  - "The death of manual bug hunting"
+card_topic: "AI + Vulnerabilities"
+topic_count: 6
 ---
 
 # Podcast Summary: Risky Business (832) - Anthropic's "Mythos" Model

@@ -10,15 +10,13 @@ video_id: "hyj2XrwlsWc"
 thumbnail: "https://i.ytimg.com/vi/hyj2XrwlsWc/sddefault.jpg"
 description: "AI-generated summary of Srsly Risky Biz: America's next top (cyber) model from Risky Business Media"
 tags: ["cybersecurity"]
-industries: ["Technology", "Critical Infrastructure", "Manufacturing"]
-geos: ["Global", "US"]
-threats: ["AI Threats", "Supply Chain", "Zero-Day"]
-ciso_insights:
-  - "Accelerate patch management cycles to counter the shrinking window of vulnerability created by AI-driven discovery."
-  - "Implement rigorous third-party due diligence to prevent sanctioned technology from leaking through your supply chain."
-  - "Deploy AI-augmented security tools to match the speed of automated exploitation scripts used by adversaries."
-  - "Audit open-source software dependencies for critical vulnerabilities that LLMs can now identify with minimal instruction."
-  - "Monitor for automated exploitation patterns in SOC telemetry that indicate non-expert actors using AI-generated scripts."
+hook: "The era of the elite hacker is ending as AI turns every amateur into a zero-day threat."
+stings:
+  - "Claude unmasking kernel flaws"
+  - "Sanctioned tech flowing East"
+  - "Commercial gear outrunning militaries"
+card_topic: "AI+Cyber+Warfare"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

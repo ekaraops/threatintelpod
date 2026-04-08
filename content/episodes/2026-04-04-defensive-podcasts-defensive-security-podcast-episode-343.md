@@ -10,15 +10,13 @@ video_id: "_7LsQPt8fT8"
 thumbnail: "https://i.ytimg.com/vi/_7LsQPt8fT8/sddefault.jpg"
 description: "AI-generated summary of Defensive Security Podcast Episode 343 from Defensive Podcasts"
 tags: ["defense"]
-industries: ["Technology", "Software Development"]
-geos: ["Global"]
-threats: ["Credential Theft", "Supply Chain Attack", "Malware-as-a-Service"]
-ciso_insights:
-  - "Implement conditional access policies to restrict administrative logins to managed devices."
-  - "Enforce multi-admin approval workflows for high-impact actions like remote device wiping."
-  - "Audit and secure non-human identities including API tokens and service accounts."
-  - "Strengthen CI/CD pipeline security by limiting outbound network access for runners."
-  - "Monitor for unauthorized creation of privileged accounts or changes to security settings."
+hook: "Hackers aren't breaking into your systems anymore—they're simply logging in."
+stings:
+  - "80,000 devices wiped in a single keystroke"
+  - "The dark side of 'rubber stamp' compliance"
+  - "Malware hiding inside your trusted code"
+card_topic: "Identity + Integrity"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

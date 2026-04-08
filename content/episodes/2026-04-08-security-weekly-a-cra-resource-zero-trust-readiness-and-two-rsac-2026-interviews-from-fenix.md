@@ -10,15 +10,13 @@ video_id: "d7zJ9OObOGY"
 thumbnail: "https://i.ytimg.com/vi/d7zJ9OObOGY/sddefault.jpg"
 description: "AI-generated summary of Zero Trust Readiness and Two RSAC 2026 Interviews from Fenix24 and Absolute Security - BSW #442 from Security Weekly - A CRA Resource"
 tags: ["cybersecurity"]
-industries: ["All Industries", "Technology", "SaaS"]
-geos: ["Global"]
-threats: ["AI Threats", "Identity", "Cloud Security", "Ransomware"]
-ciso_insights:
-  - "Audit all non-human and test accounts immediately to ensure universal MFA coverage and eliminate over-privileged AI agents."
-  - "Conduct recovery-focused tabletop exercises that simulate long-term business downtime rather than just focusing on breach prevention."
-  - "Implement a formal data discovery and classification program before deploying autonomous AI agents into production environments."
-  - "Transition from traditional access models to Just-in-Time (JIT) provisioning to minimize the attack surface of administrative identities."
-  - "Quantify cyber risk in terms of daily business interruption costs to secure executive support for resilience and orchestration initiatives."
+hook: "Your AI agents are multiplying faster than your ability to secure them, creating a massive, unmanaged shadow attack surface."
+stings:
+  - "4,000 agents in ninety days"
+  - "The Ghost VM credential heist"
+  - "Downtime is the real killer"
+card_topic: "AI + Resilience"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

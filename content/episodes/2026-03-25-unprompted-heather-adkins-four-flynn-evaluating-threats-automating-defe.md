@@ -10,15 +10,13 @@ video_id: "B_7RpP90rUk"
 thumbnail: "https://i.ytimg.com/vi/B_7RpP90rUk/sddefault.jpg"
 description: "AI-generated summary of Heather Adkins &  Four Flynn - Evaluating Threats & Automating Defense at Google | [un]prompted 2026 from unprompted"
 tags: ["cybersecurity"]
-industries: ["Technology", "Software Development"]
-geos: ["Global"]
-threats: ["Automated Exploitation", "Software Vulnerabilities", "AI-Driven Attacks"]
-ciso_insights:
-  - "Invest in agentic AI tools to automate the discovery and remediation of complex memory safety bugs."
-  - "Prioritize proactive code hardening over reactive patching to reduce the overall attack surface."
-  - "Implement automated verification systems like fuzzing and formal verification to validate all software patches."
-  - "Monitor the rise of automated exploit generation frameworks to prepare for accelerated attack cycles."
-  - "Integrate AI-driven security agents into the SDLC to address the growing backlog of unanalyzed vulnerabilities."
+hook: "Google is training AI agents to hunt for bugs with the same relentless intuition as elite human researchers."
+stings:
+  - "The VAI Apocalypse looms"
+  - "Autonomous patching loops"
+  - "Zero-day speed at scale"
+card_topic: "Agentic+Defense"
+topic_count: 6
 ---
 
 # Podcast Summary: Evaluating Threats & Automating Defense at Google

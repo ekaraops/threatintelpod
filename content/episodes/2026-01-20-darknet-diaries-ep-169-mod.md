@@ -10,15 +10,13 @@ video_id: "dd-169"
 thumbnail: "https://f.prxu.org/7057/9d4c34be-a7df-41c7-a0da-5269b660e688/images/9621e95a-30a8-4b19-9cea-0b2dfde5f6d1/phonefall.jpg"
 description: "AI-generated summary of EP 169: MoD from Darknet Diaries"
 tags: ["stories", "darknet-diaries"]
-industries: ["Telecommunications", "Government", "Finance"]
-geos: ["US", "Global"]
-threats: ["Privileged Access Abuse", "Session Hijacking", "Insider Threats", "Remote Access Exploitation"]
-ciso_insights:
-  - "Audit all remote access points used by employees to prevent unauthorized network entry."
-  - "Implement encryption for all communication protocols to mitigate credential interception."
-  - "Monitor metadata and connection patterns to identify anomalous user behavior."
-  - "Enforce strict principle of least privilege to limit the impact of administrative account compromises."
-  - "Develop robust insider threat programs to manage risks from former employees or contractors."
+hook: "A single numerical algorithm once granted teenagers total control over the world's most sensitive military and corporate communications."
+stings:
+  - "The Tymnet backdoor exploit"
+  - "A legendary hacker blood feud"
+  - "The raid on a game studio"
+card_topic: "Hacker + Origins"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

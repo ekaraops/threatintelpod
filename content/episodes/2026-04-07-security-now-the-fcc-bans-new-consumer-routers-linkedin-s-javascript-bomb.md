@@ -10,15 +10,13 @@ video_id: "NbW0rBJEs_0"
 thumbnail: "https://i.ytimg.com/vi/NbW0rBJEs_0/sddefault.jpg"
 description: "AI-generated summary of The FCC Bans New Consumer Routers - LinkedIn’s JavaScript Bombshell from Security Now"
 tags: ["cybersecurity"]
-industries: ["Technology", "Critical Infrastructure", "SaaS"]
-geos: ["US", "Global"]
-threats: ["Supply Chain", "AI Threats", "Identity", "Cloud Security"]
-ciso_insights:
-  - "Audit all third-party developer tools and vulnerability scanners to prevent supply chain compromises like the Cisco/Trivy breach."
-  - "Restrict GitHub Actions permissions and scope to minimize the impact of stolen developer credentials."
-  - "Implement centralized endpoint management to control Windows update cycles and prevent forced, unmanaged OS upgrades."
-  - "Monitor network logs for unusual outbound traffic patterns from IoT devices to mitigate foreign-made hardware risks."
-  - "Evaluate the security posture of browser-based extensions and JavaScript-heavy platforms to protect against advanced fingerprinting and data scraping."
+hook: "Your browser is no longer a private window, but a sensor for massive data harvesting."
+stings:
+  - "LinkedIn's 6,000-extension scan"
+  - "The FCC's router blackout"
+  - "AI-powered code theft"
+card_topic: "Cyber+Threats"
+topic_count: 6
 ---
 
 # Podcast Summary: The FCC Bans New Consumer Routers & LinkedIn’s JavaScript Bombshell

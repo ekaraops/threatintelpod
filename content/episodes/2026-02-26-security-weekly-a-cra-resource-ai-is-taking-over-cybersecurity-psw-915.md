@@ -10,15 +10,13 @@ video_id: "1-tXaeUzehc"
 thumbnail: "https://i.ytimg.com/vi/1-tXaeUzehc/sddefault.jpg"
 description: "AI-generated summary of AI Is Taking Over Cybersecurity - PSW #915 from Security Weekly - A CRA Resource"
 tags: ["cybersecurity"]
-industries: ["Healthcare", "Technology", "Finance"]
-geos: ["Global"]
-threats: ["Prompt Injection", "Supply Chain Attack", "IoT Vulnerabilities", "AI-Driven Exploitation"]
-ciso_insights:
-  - "Audit AI integration points to prevent prompt injection via malicious repositories."
-  - "Monitor network edge devices and VPN appliances for credential harvesting attempts."
-  - "Implement zero trust principles by enforcing a default deny policy at execution."
-  - "Validate supply chain integrity by verifying package checksums and hardware microcode."
-  - "Evaluate the security impact of private equity acquisitions on critical vendor stability."
+hook: "Your most trusted devices are becoming silent informants in a world of invisible signals."
+stings:
+  - "Malicious code hiding in plain sight"
+  - "The lethal cost of budget cuts"
+  - "Pacemakers under digital siege"
+card_topic: "Cyber+Threat+Landscape"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

@@ -10,15 +10,13 @@ video_id: "W1bDYWcVPzw"
 thumbnail: "https://i.ytimg.com/vi/W1bDYWcVPzw/sddefault.jpg"
 description: "AI-generated summary of Cthullu, BlueHammer, NK, CUPs, Axios, Fortinet, Cognitive Surrender, Aaran Leyland - SWN #570 from Security Weekly"
 tags: ["news"]
-industries: ["Technology","Software Development"]
-geos: ["Global","US"]
-threats: ["Phishing","Supply Chain","Privilege Escalation","AI-Driven Attacks"]
-ciso_insights:
-  - "Implement strict conditional access policies to mitigate session theft from device code phishing."
-  - "Monitor package updates for unexpected post-install scripts to detect supply chain compromises."
-  - "Restrict printing services like CUPS to VPN-only access to prevent remote exploitation."
-  - "Enforce rigorous identity verification processes to counter North Korean-led IT fraud schemes."
-  - "Audit OAuth 2.0 device authorization flows to identify vulnerabilities to token theft."
+hook: "Your MFA won't save you when attackers hijack the very tokens that prove you're human."
+stings:
+  - "OAuth flows turned into session-stealing traps"
+  - "North Korean actors coaching fake American IT pros"
+  - "The terrifying rise of cognitive surrender"
+card_topic: "Threat+Intelligence"
+topic_count: 6
 ---
 
 # Podcast Summary: Security Weekly News #570

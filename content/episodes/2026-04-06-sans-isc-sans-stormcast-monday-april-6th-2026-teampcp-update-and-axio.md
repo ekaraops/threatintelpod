@@ -10,15 +10,13 @@ video_id: "CwxFBw6K5w8"
 thumbnail: "https://i.ytimg.com/vi/CwxFBw6K5w8/sddefault.jpg"
 description: "AI-generated summary of SANS Stormcast Monday, April 6th, 2026: TeamPCP Update and Axio Post Mortem; Fortinet 0-Day (#) from SANS Internet Storm Center"
 tags: ["threat-intelligence"]
-industries: ["Technology", "Software Development"]
-geos: ["Global"]
-threats: ["Social Engineering", "Supply Chain Attack", "Zero-Day Exploitation"]
-ciso_insights:
-  - "Prioritize immediate patching of FortiClient EMS to mitigate unauthenticated remote code execution."
-  - "Implement strict developer training regarding social engineering tactics used during video conferences."
-  - "Audit all third-party NPM dependencies and CMS extensions for suspicious version changes."
-  - "Deploy EDR policies to block unauthorized software installations triggered by web browsers."
-  - "Monitor NPM registries for rapid deployment of malicious packages targeting development workflows."
+hook: "A fake video call update just became the most dangerous weapon in a North Korean hacker's arsenal."
+stings:
+  - "Weeks of building rapport"
+  - "The 'update' trap"
+  - "Poisoned NPM extensions"
+card_topic: "Social + Engineering"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

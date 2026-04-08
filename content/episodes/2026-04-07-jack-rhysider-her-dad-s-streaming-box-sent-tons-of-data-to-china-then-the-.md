@@ -10,15 +10,13 @@ video_id: "dS6PkuZuxJ4"
 thumbnail: "https://i.ytimg.com/vi/dS6PkuZuxJ4/sddefault.jpg"
 description: "AI-generated summary of Her dad's streaming box sent tons of data to China. Then the FBI showed up. 📺 Ep. 172: SuperBox from Jack Rhysider"
 tags: ["cybersecurity"]
-industries: ["Technology", "All Industries"]
-geos: ["Global", "US"]
-threats: ["IoT", "Supply Chain", "DDoS", "Identity"]
-ciso_insights:
-  - "Mandate strict network segmentation for all IoT and streaming devices on remote worker home networks."
-  - "Update remote work policies to explicitly prohibit the use of unvetted, third-party streaming hardware."
-  - "Configure EDR/XDR tools to monitor for lateral movement attempts originating from residential IP ranges."
-  - "Train executives and high-value targets on the security risks associated with pirated consumer electronics."
-  - "Monitor network traffic for anomalies such as excessive ARP requests or high-volume outbound uploads to suspicious domains."
+hook: "Your cheap pirated streaming box is actually a Trojan Horse designed to hijack your entire home network."
+stings:
+  - "A 31 Tbps botnet hiding in plain sight"
+  - "Influencers selling malware to suburban families"
+  - "The silent pivot from living room to corporate server"
+card_topic: "BadBox + IoT"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

@@ -10,15 +10,13 @@ video_id: "1sd26pWhfmg"
 thumbnail: "https://i.ytimg.com/vi/1sd26pWhfmg/sddefault.jpg"
 description: "AI-generated summary of Nicholas Carlini - Black-hat LLMs | [un]prompted 2026 from unprompted"
 tags: ["cybersecurity"]
-industries: ["Technology", "Software Development"]
-geos: ["Global"]
-threats: ["Automated Exploit Generation", "Zero-Day Vulnerabilities", "AI-Driven Attacks"]
-ciso_insights:
-  - "Accelerate the development of automated defensive and validation tools to match attacker speed."
-  - "Prioritize the migration to memory-safe programming languages like Rust to mitigate systemic risks."
-  - "Implement advanced detection mechanisms capable of responding to shrinking time-to-exploit windows."
-  - "Invest in AI-driven code review and fuzzing to identify vulnerabilities before attackers do."
-  - "Prepare for a massive increase in vulnerability volume by addressing the human validation bottleneck."
+hook: "The historical advantage of the defender has officially collapsed as LLMs begin hunting zero-days autonomously."
+stings:
+  - "Exponentially accelerating exploit cycles"
+  - "Linux kernel vulnerabilities found in seconds"
+  - "The era of human-speed defense is over"
+card_topic: "Black-hat + LLMs"
+topic_count: 6
 ---
 
 # Podcast Summary: Black-hat LLMs (Nicholas Carlini)

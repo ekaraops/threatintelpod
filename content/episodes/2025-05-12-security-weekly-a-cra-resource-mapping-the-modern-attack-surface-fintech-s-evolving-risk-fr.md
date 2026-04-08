@@ -10,15 +10,13 @@ video_id: "5oVVcPZ3B3k"
 thumbnail: "https://i.ytimg.com/vi/5oVVcPZ3B3k/sddefault.jpg"
 description: "AI-generated summary of Mapping the Modern Attack Surface: Fintech’s Evolving Risk Frontier - Erika Dean - CSP #212 from Security Weekly - A CRA Resource"
 tags: ["cybersecurity"]
-industries: ["Finance", "Fintech"]
-geos: ["Global"]
-threats: ["Supply Chain", "Cloud Outages", "Insider Threats"]
-ciso_insights:
-  - "Implement security by design principles during the initial product development phase."
-  - "Deploy network canaries to detect unauthorized lateral movement within the environment."
-  - "Integrate automated failover mechanisms to ensure business continuity during cloud outages."
-  - "Establish a centralized system of record for comprehensive asset and vulnerability intelligence."
-  - "Conduct regular attack simulations to validate the effectiveness of existing security controls."
+hook: "The era of reactive security is dead; in fintech, a single cloud outage is now a systemic collapse."
+stings:
+  - "Decoy canaries in the dark"
+  - "The AI-speed arms race"
+  - "Shadow assets everywhere"
+card_topic: "Fintech + Resilience"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

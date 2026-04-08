@@ -10,15 +10,13 @@ video_id: "kgwvAyF7qsA"
 thumbnail: "https://i.ytimg.com/vi/kgwvAyF7qsA/sddefault.jpg"
 description: "AI-generated summary of Dan Guido - 200 Bugs/Week/Engineer: How We Rebuilt Trail of Bits Around AI | [un]prompted 2026 from unprompted"
 tags: ["cybersecurity"]
-industries: ["Technology", "Professional Services"]
-geos: ["Global"]
-threats: ["Supply Chain", "AI-Generated Malicious Code", "Prompt Injection"]
-ciso_insights:
-  - "Implement a mandatory package cooldown policy to mitigate day-zero supply chain attacks."
-  - "Enforce sandboxed environments for all AI agents to prevent unauthorized system access."
-  - "Establish a curated marketplace for AI tools and skills to prevent the use of unverified software."
-  - "Utilize Model Context Protocol servers to standardize how AI agents interact with internal security tools."
-  - "Develop structured AI workflows to encode senior expertise and ensure consistent security outputs."
+hook: "When engineers went from 15 to 200 bugs per week, the traditional consulting business model died."
+stings:
+  - "The psychological war against AI-native workflows"
+  - "Encoding senior expertise into autonomous agents"
+  - "Scaling security without the human bottleneck"
+card_topic: "AI+Security+Evolution"
+topic_count: 6
 ---
 
 # Podcast Summary: How Trail of Bits Rebuilt Around AI

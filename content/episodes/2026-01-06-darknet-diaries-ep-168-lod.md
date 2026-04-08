@@ -10,15 +10,13 @@ video_id: "dd-168"
 thumbnail: "https://f.prxu.org/7057/019ddc61-96d0-4f23-a7b1-205caf42a3b4/images/8d8359ea-49f6-43f1-ad2e-19ba4084b3d9/90-s.jpg"
 description: "AI-generated summary of EP 168: LoD from Darknet Diaries"
 tags: ["stories", "darknet-diaries"]
-industries: ["Telecommunications", "Technology"]
-geos: ["US"]
-threats: ["Social Engineering", "Unauthorized Access", "Information Leakage"]
-ciso_insights:
-  - "Implement strict physical security controls to prevent dumpster diving for sensitive documentation."
-  - "Audit all remote access diagnostic tools to ensure they cannot be hijacked for eavesdropping."
-  - "Monitor for unauthorized changes in billing and subscriber databases to prevent ghost accounts."
-  - "Reduce reliance on security through obscurity by adopting robust authentication protocols."
-  - "Train employees to recognize and report social engineering attempts targeting communication systems."
+hook: "Before Apple existed, Steve Jobs and Wozniak were selling illegal devices to hijack the global phone network."
+stings:
+  - "Blue boxes and god-mode modems"
+  - "The era of digital anarchy"
+  - "When curiosity became a federal crime"
+card_topic: "Phreaking+Origins"
+topic_count: 6
 ---
 
 This summary covers the first part of the Darknet Diaries episode regarding the history of the Legion of Doom (LoD) and the early days of phone phreaking.

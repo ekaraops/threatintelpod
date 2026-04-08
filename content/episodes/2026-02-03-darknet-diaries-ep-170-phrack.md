@@ -10,15 +10,13 @@ video_id: "dd-170"
 thumbnail: "https://f.prxu.org/7057/02c8d2f1-68db-4edf-9e73-ca6f9ea40b72/images/7959df2b-4a68-4512-b274-2c1c5742293f/blownaway.jpg"
 description: "AI-generated summary of EP 170: Phrack from Darknet Diaries"
 tags: ["stories", "darknet-diaries"]
-industries: ["Technology", "Telecommunications"]
-geos: ["Global"]
-threats: ["Buffer Overflow", "GPS Jamming", "Domain Hijacking"]
-ciso_insights:
-  - "Implement modern memory protections to mitigate stack smashing and buffer overflow exploits."
-  - "Monitor signal integrity for GPS and satellite-based communications to prevent jamming."
-  - "Enforce rigorous source code reviews to identify vulnerabilities before they are exploited."
-  - "Adopt responsible disclosure protocols to manage the lifecycle of discovered vulnerabilities."
-  - "Strengthen domain management processes to prevent hijacking via registrar flaws."
+hook: "The underground magazine that birthed the modern cybersecurity industry through sheer technical rebellion."
+stings:
+  - "Smashing the stack for profit"
+  - "The legal battle that birthed the EFF"
+  - "Forty years of pure digital chaos"
+card_topic: "Phrack + Legacy"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

@@ -10,15 +10,13 @@ video_id: "0Xc5mB-bvFQ"
 thumbnail: "https://i.ytimg.com/vi/0Xc5mB-bvFQ/sddefault.jpg"
 description: "AI-generated summary of Balancing False Positives &amp; Fale Negatives from Defensive Podcasts"
 tags: ["defense"]
-industries: ["Technology", "Finance"]
-geos: ["Global"]
-threats: ["Insider Threats", "Unauthorized Access", "Lateral Movement"]
-ciso_insights:
-  - "Implement deception-based detection using honey-accounts to identify unauthorized access."
-  - "Deploy honey-files on sensitive servers to act as high-fidelity tripwires."
-  - "Establish a baseline of normal network behavior to improve detection accuracy."
-  - "Prioritize high-fidelity signals over alert volume to reduce SOC burnout."
-  - "Monitor audit logs specifically for access to non-business-critical assets."
+hook: "The most dangerous threat to your SOC isn't a hacker, but the crushing weight of useless noise."
+stings:
+  - "The deadly silence of missed attacks"
+  - "Digital traps laid in the dark"
+  - "Quality over quantity"
+card_topic: "Detection + Strategy"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

@@ -10,15 +10,13 @@ video_id: "m8gqtiVd1z4"
 thumbnail: "https://i.ytimg.com/vi/m8gqtiVd1z4/sddefault.jpg"
 description: "AI-generated summary of Agents at the Door: Vetting Non-Human Identities in External IAM - Rakesh Soni - CSP #219 from Cybersecurity Playlist"
 tags: ["mixed"]
-industries: ["Technology", "Retail"]
-geos: ["Global"]
-threats: ["Identity Theft", "Unauthorized Access", "Deepfakes"]
-ciso_insights:
-  - "Implement human-in-the-loop approval workflows for all high-risk agent transactions."
-  - "Shift security monitoring focus from user interfaces to API-centric defense and token management."
-  - "Adopt fine-grained authorization and attribute-based access controls for non-human identities."
-  - "Strengthen protection for API keys and certificates used in machine-to-machine communications."
-  - "Establish privacy guardrails to prevent AI agents from accessing or leaking sensitive PII."
+hook: "Your AI agent might just bankrupt you while you sleep."
+stings:
+  - "Rogue bots with unlimited budgets"
+  - "The death of biometric trust"
+  - "Identity wars in the API layer"
+card_topic: "Agentic + IAM"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)

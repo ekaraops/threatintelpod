@@ -10,15 +10,13 @@ video_id: "IhAFrh-kYaM"
 thumbnail: "https://i.ytimg.com/vi/IhAFrh-kYaM/sddefault.jpg"
 description: "AI-generated summary of OT on the Frontlines: Threat Intelligence You Can’t Ignore - Dawn Cappelli - CSP #216 from Cybersecurity Playlist"
 tags: ["mixed"]
-industries: ["Manufacturing", "Utilities", "Energy"]
-geos: ["Global", "US"]
-threats: ["Ransomware", "State-Sponsored", "Living off the Land"]
-ciso_insights:
-  - "Implement strict network segmentation between IT and OT environments to prevent lateral movement."
-  - "Conduct regular tabletop exercises to test and refine your OT-specific incident response plans."
-  - "Deploy OT-specific monitoring tools to gain visibility into industrial control protocol communications."
-  - "Prioritize vulnerability management using the 'Now, Next, Never' framework to focus on active exploits."
-  - "Enforce multi-factor authentication and secure remote access protocols for all industrial network entry points."
+hook: "Your local water utility is the new frontline of global warfare."
+stings:
+  - "State-sponsored ghosts in the machine"
+  - "Malware that speaks industrial languages"
+  - "The invisible siege of critical infrastructure"
+card_topic: "OT + Warfare"
+topic_count: 6
 ---
 
 ## TL;DR (Too Long, Didn't Read)
