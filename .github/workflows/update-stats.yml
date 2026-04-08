@@ -1,0 +1,68 @@
+name: Update YouTube View Counts
+
+on:
+  schedule:
+    - cron: '0 6 * * 3'  # Every Wednesday at 6am UTC
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch YouTube view counts
+        run: |
+          python3 -c "
+          import urllib.request, json, ssl, re, time, glob
+
+          ssl_ctx = ssl.create_default_context()
+
+          video_ids = set()
+          for f in glob.glob('content/episodes/*.md'):
+              with open(f) as fh:
+                  for line in fh:
+                      if line.startswith('video_id:'):
+                          vid = line.split('\"')[1] if '\"' in line else ''
+                          if vid and not vid.startswith('dd-'):
+                              video_ids.add(vid)
+
+          print(f'Found {len(video_ids)} video IDs')
+
+          stats = {}
+          for vid in sorted(video_ids):
+              try:
+                  url = f'https://www.youtube.com/watch?v={vid}'
+                  req = urllib.request.Request(url, headers={
+                      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+                      'Accept-Language': 'en-US,en;q=0.9',
+                      'Cookie': 'CONSENT=YES+1'
+                  })
+                  resp = urllib.request.urlopen(req, context=ssl_ctx, timeout=15)
+                  html = resp.read().decode('utf-8', errors='ignore')
+                  match = re.search(r'\"viewCount\":\"(\d+)\"', html)
+                  stats[vid] = int(match.group(1)) if match else 0
+              except:
+                  stats[vid] = 0
+              time.sleep(0.5)
+
+          with open('data/youtube_stats.json', 'w') as f:
+              json.dump(stats, f, indent=2, sort_keys=True)
+          print(f'Updated {len(stats)} entries')
+          "
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/youtube_stats.json
+          git diff --staged --quiet || (git commit -m "Auto-update YouTube view counts" && git push)

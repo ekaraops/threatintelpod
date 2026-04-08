@@ -93,17 +93,20 @@
   <div class="container">
     <div class="section-header">
       <h2>Most Watched</h2>
-      <span class="trending-subtitle">Ranked by YouTube views</span>
+      <span class="trending-subtitle">Last 3 months, ranked by YouTube views</span>
     </div>
     <div class="trending-list">
       {{ $allEpisodes := where .Site.RegularPages "Section" "episodes" }}
+      {{ $threeMonthsAgo := now.AddDate 0 -3 0 }}
       {{ $scored := slice }}
       {{ range $allEpisodes }}
-        {{ $vid := .Params.video_id }}
-        {{ $views := 0 }}
-        {{ with index $ytStats $vid }}{{ $views = . }}{{ end }}
-        {{ if gt $views 500 }}
-          {{ $scored = $scored | append (dict "Page" . "Views" $views) }}
+        {{ if .Date.After $threeMonthsAgo }}
+          {{ $vid := .Params.video_id }}
+          {{ $views := 0 }}
+          {{ with index $ytStats $vid }}{{ $views = . }}{{ end }}
+          {{ if gt $views 100 }}
+            {{ $scored = $scored | append (dict "Page" . "Views" $views) }}
+          {{ end }}
         {{ end }}
       {{ end }}
       {{ range first 5 (sort $scored "Views" "desc") }}
