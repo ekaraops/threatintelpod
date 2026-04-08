@@ -170,6 +170,25 @@ h1, h2, h3, h4, h5, h6 {
   fill: var(--accent-orange);
 }
 
+.nav-subscribe-btn {
+  padding: 6px 16px !important;
+  background: var(--accent-green);
+  color: var(--bg-primary) !important;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  margin-left: 4px;
+  transition: all 0.25s;
+}
+
+.nav-subscribe-btn:hover {
+  background: var(--accent-cyan);
+  color: var(--bg-primary) !important;
+  box-shadow: 0 0 16px rgba(0, 180, 216, 0.3);
+  transform: translateY(-1px);
+}
+
 /* ============================================
    HEADER
    ============================================ */
