@@ -12,16 +12,7 @@
       {{ range $.Site.Data.feeds }}
       <a href="{{ .youtube_url }}" target="_blank" rel="noopener noreferrer" class="channel-card">
         <div class="channel-card-header">
-          <div class="channel-icon">
-            {{ if eq .category "threat-intelligence" }}&#x1f6a8;{{ end }}
-            {{ if eq .category "news" }}&#x1f4f0;{{ end }}
-            {{ if eq .category "defense" }}&#x1f6e1;{{ end }}
-            {{ if eq .category "education" }}&#x1f393;{{ end }}
-            {{ if eq .category "leadership" }}&#x1f4bc;{{ end }}
-            {{ if eq .category "interviews" }}&#x1f399;{{ end }}
-            {{ if eq .category "ai-security" }}&#x1f916;{{ end }}
-            {{ if eq .category "mixed" }}&#x1f4cb;{{ end }}
-          </div>
+          <span class="channel-category-badge">{{ .category }}</span>
           <span class="channel-type-badge">{{ .type }}</span>
         </div>
         <h3 class="channel-name">{{ .name }}</h3>

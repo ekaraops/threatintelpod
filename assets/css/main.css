@@ -1331,9 +1331,17 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 16px;
 }
 
-.channel-icon {
-  font-size: 2.2rem;
-  line-height: 1;
+.channel-category-badge {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 3px;
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--accent-green);
+  border: 1px solid rgba(0, 255, 136, 0.2);
 }
 
 .channel-type-badge {
