@@ -19,6 +19,7 @@ card_topic: "Ransomware + Defense"
 topic_count: 6
 threats: ["Ransomware", "Lateral Movement", "Zero-day Attacks"]
 industries: ["Manufacturing"]
+speakers: "Jack Rhysider"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

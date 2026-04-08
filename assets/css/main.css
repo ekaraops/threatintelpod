@@ -920,6 +920,13 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.7;
 }
 
+.episode-speakers {
+  font-size: 1rem;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  line-height: 1.7;
+}
+
 /* ============================================
    EPISODE CONTENT (Summary Body)
    ============================================ */

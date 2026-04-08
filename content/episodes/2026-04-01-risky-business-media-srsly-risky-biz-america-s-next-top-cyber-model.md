@@ -19,6 +19,7 @@ card_topic: "AI+Cyber+Warfare"
 topic_count: 6
 threats: ["AI-Driven Vulnerability Research", "Supply Chain Circumvention", "Automated Exploitation"]
 industries: ["Defense", "Technology", "Telecommunications"]
+speakers: "Patrick Gray"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

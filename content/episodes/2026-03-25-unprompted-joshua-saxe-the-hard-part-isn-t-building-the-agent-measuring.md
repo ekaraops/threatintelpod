@@ -19,6 +19,7 @@ card_topic: "AI+Defense+Metrics"
 topic_count: 6
 threats: ["AI-Driven Attacks", "Autonomous Agents"]
 industries: ["Cybersecurity", "Information Technology"]
+speakers: "Joshua Saxe"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

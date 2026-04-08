@@ -19,6 +19,7 @@ card_topic: "BadBox + IoT"
 topic_count: 6
 threats: ["Botnets", "DDoS", "ARP Spoofing", "Trojan Horse"]
 industries: ["Consumer Electronics", "Telecommunications", "Information Technology"]
+speakers: "Jack Rhysider"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

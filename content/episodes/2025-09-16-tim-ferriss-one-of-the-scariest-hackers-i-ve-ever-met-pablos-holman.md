@@ -19,6 +19,7 @@ card_topic: "Hacker+Mindset"
 topic_count: 6
 threats: ["Zero-Click Exploits", "Zero-Day Vulnerabilities", "Social Engineering"]
 industries: ["Energy", "Manufacturing", "Technology"]
+speakers: "Tim Ferriss, Pablos Holman"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

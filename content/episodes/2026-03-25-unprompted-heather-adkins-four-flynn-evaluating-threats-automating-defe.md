@@ -19,6 +19,7 @@ card_topic: "Agentic+Defense"
 topic_count: 6
 threats: ["Automated Exploit Generation", "Software Vulnerabilities", "AI-driven Hacking"]
 industries: ["Software Development", "Cybersecurity", "Technology"]
+speakers: "Heather Adkins, Four Flynn"
 ---
 
 # Podcast Summary: Evaluating Threats & Automating Defense at Google

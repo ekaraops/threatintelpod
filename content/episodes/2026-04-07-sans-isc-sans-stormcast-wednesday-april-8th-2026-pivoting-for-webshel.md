@@ -19,6 +19,7 @@ card_topic: "Threat+Intelligence"
 topic_count: 6
 threats: ["Web Shell Scanning", "Parasitic Attacking", "Kubernetes Pod Injection", "Spearphishing"]
 industries: ["Software Development", "Cloud Computing"]
+speakers: "Johannes Ullrich"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

@@ -19,6 +19,7 @@ card_topic: "Threat+Intelligence"
 topic_count: 6
 threats: ["Phishing", "Supply Chain Attack", "Privilege Escalation", "Social Engineering"]
 industries: ["Software Development", "Information Technology", "Government"]
+speakers: "Aaran Leyland"
 ---
 
 # Podcast Summary: Security Weekly News #570

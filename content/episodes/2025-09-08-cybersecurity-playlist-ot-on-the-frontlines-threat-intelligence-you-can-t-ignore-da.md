@@ -19,6 +19,7 @@ card_topic: "OT + Warfare"
 topic_count: 6
 threats: ["Ransomware", "Living off the Land", "Protocol-based Attacks", "Hacktivism"]
 industries: ["Utilities", "Manufacturing", "Critical Infrastructure"]
+speakers: "Dawn Cappelli"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

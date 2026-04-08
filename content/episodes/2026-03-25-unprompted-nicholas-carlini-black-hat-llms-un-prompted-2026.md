@@ -19,6 +19,7 @@ card_topic: "Black-hat + LLMs"
 topic_count: 6
 threats: ["Zero-day Exploitation", "Automated Exploit Generation", "SQL Injection", "Heap Overflow"]
 industries: ["Software Development", "Cybersecurity", "Finance"]
+speakers: "Nicholas Carlini"
 ---
 
 # Podcast Summary: Black-hat LLMs (Nicholas Carlini)

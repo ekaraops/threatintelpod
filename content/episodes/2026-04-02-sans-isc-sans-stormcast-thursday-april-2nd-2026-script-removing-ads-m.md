@@ -19,6 +19,7 @@ card_topic: "Stealth + Exploitation"
 topic_count: 6
 threats: ["Exploit Kits", "CSRF", "Use-after-free", "MotW Removal"]
 industries: ["Consumer Electronics", "Telecommunications"]
+speakers: "Johannes Ullrich"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

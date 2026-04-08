@@ -19,6 +19,7 @@ card_topic: "Agentic+Infrastructure"
 topic_count: 6
 threats: ["Shadow AI", "Information Silos", "AI-Generated Software Stacks"]
 industries: ["Technology", "Energy", "Enterprise Software"]
+speakers: "Daniel Miessler"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

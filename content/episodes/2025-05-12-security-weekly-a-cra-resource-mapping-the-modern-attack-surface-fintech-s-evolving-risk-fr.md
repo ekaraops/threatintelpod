@@ -19,6 +19,7 @@ card_topic: "Fintech + Resilience"
 topic_count: 6
 threats: ["Supply Chain Attacks", "AI-driven Attacks", "Insider Threats", "Cloud Outages"]
 industries: ["Fintech", "Banking"]
+speakers: "Erika Dean"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

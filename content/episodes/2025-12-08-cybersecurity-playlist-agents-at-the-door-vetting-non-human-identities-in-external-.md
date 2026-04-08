@@ -19,6 +19,7 @@ card_topic: "Agentic + IAM"
 topic_count: 6
 threats: ["Identity Theft", "Unauthorized Access", "Deepfakes", "API Exploitation"]
 industries: ["Technology", "Retail", "Finance"]
+speakers: "Rakesh Soni"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

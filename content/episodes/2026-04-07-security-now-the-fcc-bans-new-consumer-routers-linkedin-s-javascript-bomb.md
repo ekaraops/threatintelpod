@@ -19,6 +19,7 @@ card_topic: "Cyber+Threats"
 topic_count: 6
 threats: ["Supply Chain Attack", "Browser Fingerprinting", "Software Vulnerability Exploitation"]
 industries: ["Technology", "Telecommunications", "Software Development"]
+speakers: "Steve Gibson"
 ---
 
 # Podcast Summary: The FCC Bans New Consumer Routers & LinkedIn’s JavaScript Bombshell

@@ -19,6 +19,7 @@ card_topic: "Cyber+Threat+Landscape"
 topic_count: 6
 threats: ["Prompt Injection", "API Key Theft", "Command Injection", "Broken Authentication"]
 industries: ["Healthcare", "Consumer Electronics", "Technology"]
+speakers: ""
 ---
 
 ## TL;DR (Too Long, Didn't Read)

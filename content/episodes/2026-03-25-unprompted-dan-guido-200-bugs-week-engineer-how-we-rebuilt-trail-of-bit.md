@@ -19,6 +19,7 @@ card_topic: "AI+Security+Evolution"
 topic_count: 6
 threats: ["Supply Chain Attacks", "Prompt Injection", "Malicious Code"]
 industries: ["Cybersecurity", "Software Development"]
+speakers: "Dan Guido"
 ---
 
 # Podcast Summary: How Trail of Bits Rebuilt Around AI

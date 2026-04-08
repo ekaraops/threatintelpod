@@ -19,6 +19,7 @@ card_topic: "Social + Engineering"
 topic_count: 6
 threats: ["Social Engineering", "Supply Chain Attack", "Remote Code Execution", "Malware"]
 industries: ["Software Development", "Information Technology"]
+speakers: "Johannes Ullrich"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

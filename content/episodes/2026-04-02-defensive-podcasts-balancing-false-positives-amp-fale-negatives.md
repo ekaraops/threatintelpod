@@ -19,6 +19,7 @@ card_topic: "Detection + Strategy"
 topic_count: 6
 threats: ["Unauthorized Access", "Lateral Movement", "Data Exfiltration"]
 industries: ["Cybersecurity", "Information Technology"]
+speakers: ""
 ---
 
 ## TL;DR (Too Long, Didn't Read)

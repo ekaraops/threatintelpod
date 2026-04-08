@@ -19,6 +19,7 @@ card_topic: "Phrack + Legacy"
 topic_count: 6
 threats: ["Buffer Overflow", "GPS Jamming", "Domain Hijacking", "Exploit Development"]
 industries: ["Telecommunications", "Technology", "Public Safety"]
+speakers: "Jack Rhysider"
 ---
 
 ## TL;DR (Too Long, Didn't Read)
