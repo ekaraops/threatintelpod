@@ -1,53 +1,43 @@
 <article class="episode-card">
   <a href="{{ .Permalink }}" class="card-link">
-    <div class="card-thumbnail">
-      {{ with .Params.thumbnail }}
-      <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
-      {{ else }}
-      <div class="card-thumbnail-placeholder">
-        <span>&#x1f399;</span>
-      </div>
-      {{ end }}
-      {{ with .Params.category }}
-      <span class="card-badge">{{ . }}</span>
-      {{ end }}
+    <div class="card-source">
+      <span class="card-channel">{{ .Params.channel }}</span>
+      <span class="card-sep">&middot;</span>
+      <span class="card-date">{{ .Date.Format "Jan 2, 2006" }}</span>
     </div>
-    <div class="card-body">
-      <div class="card-meta">
-        {{ with .Params.channel }}
-        <span class="card-channel">{{ . }}</span>
-        {{ end }}
-        <span class="card-date">{{ .Date.Format "Jan 2, 2006" }}</span>
-      </div>
-      <h3 class="card-title">{{ .Title }}</h3>
 
-      {{/* CISO Tags */}}
-      {{ if or .Params.industries .Params.threats .Params.geos }}
-      <div class="card-tags">
-        {{ range .Params.threats }}
-        <span class="ctag ctag-threat">{{ . }}</span>
-        {{ end }}
-        {{ range .Params.industries }}
-        <span class="ctag ctag-industry">{{ . }}</span>
-        {{ end }}
-        {{ range .Params.geos }}
-        <span class="ctag ctag-geo">{{ . }}</span>
-        {{ end }}
-      </div>
+    {{/* The Hook */}}
+    {{ with .Params.hook }}
+    <h3 class="card-hook">{{ . }}</h3>
+    {{ else }}
+    <h3 class="card-hook">{{ .Title }}</h3>
+    {{ end }}
+
+    {{/* The Stings */}}
+    {{ with .Params.stings }}
+    <ul class="card-stings">
+      {{ range . }}
+      <li>{{ . }}</li>
       {{ end }}
+    </ul>
+    {{ else }}
+      {{ with .Params.description }}
+      <p class="card-fallback">{{ . | truncate 160 }}</p>
+      {{ end }}
+    {{ end }}
 
-      {{/* CISO Quick Insights */}}
-      {{ with .Params.ciso_insights }}
-      <ul class="card-insights">
-        {{ range . }}
-        <li>{{ . }}</li>
-        {{ end }}
-      </ul>
+    {{/* The Proof */}}
+    <div class="card-footer">
+      {{ with .Params.card_topic }}
+      <span class="card-topic">{{ . }}</span>
       {{ else }}
-        {{ with $.Params.description }}
-        <p class="card-excerpt">{{ . | truncate 120 }}</p>
+        {{ with .Params.category }}
+        <span class="card-topic">{{ . }}</span>
         {{ end }}
       {{ end }}
+      <span class="card-stats">
+        {{ with .Params.topic_count }}{{ . }} topics{{ end }}
+      </span>
     </div>
   </a>
 </article>
