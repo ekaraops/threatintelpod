@@ -26,18 +26,6 @@
       {{ end }}
     {{ end }}
 
-    {{/* Tags */}}
-    {{ if or .Params.threats .Params.industries }}
-    <div class="card-tags">
-      {{ range first 3 .Params.threats }}
-      <span class="ctag ctag-threat">{{ . }}</span>
-      {{ end }}
-      {{ range first 2 .Params.industries }}
-      <span class="ctag ctag-industry">{{ . }}</span>
-      {{ end }}
-    </div>
-    {{ end }}
-
     {{/* The Proof */}}
     <div class="card-footer">
       {{ with .Params.card_topic }}
