@@ -87,6 +87,52 @@
   </div>
 </section>
 
+{{ $ytStats := .Site.Data.youtube_stats }}
+{{ if $ytStats }}
+<section class="trending-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Most Watched</h2>
+      <span class="trending-subtitle">Ranked by YouTube views</span>
+    </div>
+    <div class="trending-list">
+      {{ $allEpisodes := where .Site.RegularPages "Section" "episodes" }}
+      {{ $scored := slice }}
+      {{ range $allEpisodes }}
+        {{ $vid := .Params.video_id }}
+        {{ $views := 0 }}
+        {{ with index $ytStats $vid }}{{ $views = . }}{{ end }}
+        {{ if gt $views 500 }}
+          {{ $scored = $scored | append (dict "Page" . "Views" $views) }}
+        {{ end }}
+      {{ end }}
+      {{ range first 5 (sort $scored "Views" "desc") }}
+      <a href="{{ .Page.Permalink }}" class="trending-item">
+        <div class="trending-rank-views">
+          <span class="trending-views">{{ if ge .Views 1000 }}{{ div .Views 1000 }}K{{ else }}{{ .Views }}{{ end }}</span>
+          <span class="trending-views-label">views</span>
+        </div>
+        <div class="trending-thumb">
+          {{ with .Page.Params.thumbnail }}
+          <img src="{{ . }}" alt="{{ $.Page.Title }}" loading="lazy">
+          {{ end }}
+        </div>
+        <div class="trending-info">
+          <span class="trending-channel">{{ .Page.Params.channel }}</span>
+          <span class="trending-title">{{ .Page.Title }}</span>
+          {{ with .Page.Params.threats }}
+          <div class="trending-tags">
+            {{ range first 3 . }}<span class="ctag ctag-threat">{{ . }}</span>{{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
 <section class="recent-episodes">
   <div class="container">
     <div class="section-header">
@@ -104,6 +150,44 @@
     </div>
   </div>
 </section>
+
+<section class="newsletter-cta">
+  <div class="container">
+    <div class="newsletter-box">
+      <div class="newsletter-content">
+        <h2 class="newsletter-title">Weekly Intelligence Brief</h2>
+        <p class="newsletter-desc">Get the week's most critical cybersecurity insights delivered to your inbox every Monday. Structured summaries, actionable takeaways, zero noise.</p>
+        <ul class="newsletter-perks">
+          <li>5-minute read covering all major podcasts and talks</li>
+          <li>CISO-ready insights with industry and threat tags</li>
+          <li>Free forever. No spam. Unsubscribe anytime.</li>
+        </ul>
+      </div>
+      <div class="newsletter-form-wrap">
+        <form class="newsletter-form" id="newsletter-form" onsubmit="return handleNewsletterSubmit(event)">
+          <input type="email" name="email" placeholder="your@email.com" required class="newsletter-input">
+          <button type="submit" class="btn btn-primary newsletter-btn">Subscribe</button>
+        </form>
+        <p class="newsletter-note" id="newsletter-note">Join security leaders getting weekly intelligence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function handleNewsletterSubmit(e) {
+  e.preventDefault();
+  var email = e.target.querySelector('input[name="email"]').value;
+  // Placeholder: store in localStorage until a newsletter platform is connected
+  var subs = JSON.parse(localStorage.getItem('tip_subscribers') || '[]');
+  if (!subs.includes(email)) subs.push(email);
+  localStorage.setItem('tip_subscribers', JSON.stringify(subs));
+  document.getElementById('newsletter-note').textContent = 'You\'re in! We\'ll send your first brief next Monday.';
+  document.getElementById('newsletter-note').style.color = '#00ff88';
+  e.target.querySelector('input[name="email"]').value = '';
+  return false;
+}
+</script>
 
 <section class="how-it-works">
   <div class="container">

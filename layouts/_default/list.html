@@ -8,11 +8,93 @@
   </div>
 </section>
 
+{{ if eq .Section "episodes" }}
+<section class="filter-bar">
+  <div class="container">
+    <div class="filter-group">
+      <span class="filter-label">Threats</span>
+      <div class="filter-tags" data-filter-type="threat">
+        <button class="filter-btn filter-btn-threat active" data-filter="all">All</button>
+        {{ $threats := slice }}
+        {{ range (where .Site.RegularPages "Section" "episodes") }}
+          {{ with .Params.threats }}
+            {{ range . }}
+              {{ $threats = $threats | append . }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ range (uniq $threats) }}
+        <button class="filter-btn filter-btn-threat" data-filter="{{ . }}">{{ . }}</button>
+        {{ end }}
+      </div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Industry</span>
+      <div class="filter-tags" data-filter-type="industry">
+        <button class="filter-btn filter-btn-industry active" data-filter="all">All</button>
+        {{ $industries := slice }}
+        {{ range (where .Site.RegularPages "Section" "episodes") }}
+          {{ with .Params.industries }}
+            {{ range . }}
+              {{ $industries = $industries | append . }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ range (uniq $industries) }}
+        <button class="filter-btn filter-btn-industry" data-filter="{{ . }}">{{ . }}</button>
+        {{ end }}
+      </div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Region</span>
+      <div class="filter-tags" data-filter-type="geo">
+        <button class="filter-btn filter-btn-geo active" data-filter="all">All</button>
+        {{ $geos := slice }}
+        {{ range (where .Site.RegularPages "Section" "episodes") }}
+          {{ with .Params.geos }}
+            {{ range . }}
+              {{ $geos = $geos | append . }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ range (uniq $geos) }}
+        <button class="filter-btn filter-btn-geo" data-filter="{{ . }}">{{ . }}</button>
+        {{ end }}
+      </div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Channel</span>
+      <div class="filter-tags" data-filter-type="channel">
+        <button class="filter-btn filter-btn-channel active" data-filter="all">All</button>
+        {{ $channels := slice }}
+        {{ range (where .Site.RegularPages "Section" "episodes") }}
+          {{ with .Params.channel }}
+            {{ $channels = $channels | append . }}
+          {{ end }}
+        {{ end }}
+        {{ range (uniq $channels) }}
+        <button class="filter-btn filter-btn-channel" data-filter="{{ . }}">{{ . }}</button>
+        {{ end }}
+      </div>
+    </div>
+    <div class="filter-active-count">
+      Showing <span id="filter-count">{{ len .Pages }}</span> of {{ len .Pages }} episodes
+    </div>
+  </div>
+</section>
+{{ end }}
+
 <section class="episodes-list">
   <div class="container">
     <div class="episode-grid">
       {{ range .Pages.ByDate.Reverse }}
-        {{ partial "episode-card.html" . }}
+        <div class="episode-filter-wrapper"
+          data-threats="{{ delimit (default (slice) .Params.threats) "," }}"
+          data-industries="{{ delimit (default (slice) .Params.industries) "," }}"
+          data-geos="{{ delimit (default (slice) .Params.geos) "," }}"
+          data-channel="{{ .Params.channel }}">
+          {{ partial "episode-card.html" . }}
+        </div>
       {{ end }}
     </div>
     {{ if not .Pages }}
@@ -24,4 +106,47 @@
     {{ end }}
   </div>
 </section>
+
+{{ if eq .Section "episodes" }}
+<script>
+(function() {
+  const filters = { threat: 'all', industry: 'all', geo: 'all', channel: 'all' };
+  const cards = document.querySelectorAll('.episode-filter-wrapper');
+  const countEl = document.getElementById('filter-count');
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const type = this.closest('[data-filter-type]').dataset.filterType;
+      const value = this.dataset.filter;
+      filters[type] = value;
+
+      this.closest('.filter-tags').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      let visible = 0;
+      cards.forEach(card => {
+        const threats = card.dataset.threats.split(',').map(s => s.trim());
+        const industries = card.dataset.industries.split(',').map(s => s.trim());
+        const geos = card.dataset.geos.split(',').map(s => s.trim());
+        const channel = card.dataset.channel;
+
+        const matchThreat = filters.threat === 'all' || threats.includes(filters.threat);
+        const matchIndustry = filters.industry === 'all' || industries.includes(filters.industry);
+        const matchGeo = filters.geo === 'all' || geos.includes(filters.geo);
+        const matchChannel = filters.channel === 'all' || channel === filters.channel;
+
+        if (matchThreat && matchIndustry && matchGeo && matchChannel) {
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (countEl) countEl.textContent = visible;
+    });
+  });
+})();
+</script>
+{{ end }}
 {{ end }}
