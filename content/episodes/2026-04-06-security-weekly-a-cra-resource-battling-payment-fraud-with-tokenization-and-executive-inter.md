@@ -17,6 +17,8 @@ stings:
   - "Identity as the final fortress"
 card_topic: "Modern + Defense"
 topic_count: 6
+threats: ["Social Engineering", "Payment Fraud", "AI-driven Scams", "Phishing"]
+industries: ["E-commerce", "Finance", "Technology"]
 ---
 
 This summary covers the key insights from the *Security Weekly* episode regarding payment fraud, passkeys, AI agents, and hybrid security.

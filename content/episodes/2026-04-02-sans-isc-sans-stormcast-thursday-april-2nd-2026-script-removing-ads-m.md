@@ -17,6 +17,8 @@ stings:
   - "Silent router hijacking via a single click"
 card_topic: "Stealth + Exploitation"
 topic_count: 6
+threats: ["Exploit Kits", "CSRF", "Use-after-free", "MotW Removal"]
+industries: ["Consumer Electronics", "Telecommunications"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

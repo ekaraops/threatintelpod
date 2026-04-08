@@ -17,6 +17,8 @@ stings:
   - "Total network collapse"
 card_topic: "Ransomware + Defense"
 topic_count: 6
+threats: ["Ransomware", "Lateral Movement", "Zero-day Attacks"]
+industries: ["Manufacturing"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

@@ -17,6 +17,8 @@ stings:
   - "The terrifying speed of the AI Bugpocalypse"
 card_topic: "AI + Vulnerabilities"
 topic_count: 6
+threats: ["Supply Chain Attack", "AI-Driven Vulnerability Research", "Trojanized Software", "Credential Compromise"]
+industries: ["Software Development", "Technology", "Cybersecurity"]
 ---
 
 # Podcast Summary: Risky Business (831) - The AI Bugpocalypse Begins

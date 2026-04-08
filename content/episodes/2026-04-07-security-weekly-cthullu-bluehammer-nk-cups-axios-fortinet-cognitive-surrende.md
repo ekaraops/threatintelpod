@@ -17,6 +17,8 @@ stings:
   - "The terrifying rise of cognitive surrender"
 card_topic: "Threat+Intelligence"
 topic_count: 6
+threats: ["Phishing", "Supply Chain Attack", "Privilege Escalation", "Social Engineering"]
+industries: ["Software Development", "Information Technology", "Government"]
 ---
 
 # Podcast Summary: Security Weekly News #570

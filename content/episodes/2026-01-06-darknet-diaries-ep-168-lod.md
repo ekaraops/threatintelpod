@@ -17,6 +17,8 @@ stings:
   - "When curiosity became a federal crime"
 card_topic: "Phreaking+Origins"
 topic_count: 6
+threats: ["Phone Phreaking", "War Dialing", "Social Engineering", "Information Leakage"]
+industries: ["Telecommunications", "Government"]
 ---
 
 This summary covers the first part of the Darknet Diaries episode regarding the history of the Legion of Doom (LoD) and the early days of phone phreaking.

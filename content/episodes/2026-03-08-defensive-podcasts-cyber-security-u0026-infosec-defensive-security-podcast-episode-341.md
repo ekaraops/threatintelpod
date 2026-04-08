@@ -17,6 +17,8 @@ stings:
   - "The million-dollar fragility of open source"
 card_topic: "AI+Threat+Evolution"
 topic_count: 6
+threats: ["AI-Assisted Attacks", "Supply Chain Attacks", "Malware-as-a-Service", "Credential Stuffing"]
+industries: ["Software Development", "Network Security", "Technology"]
 ---
 
 # Podcast Summary: Defensive Security Podcast Episode 341

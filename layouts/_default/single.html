@@ -13,6 +13,16 @@
           <time class="meta-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
         </div>
         <h1 class="episode-title">{{ .Title }}</h1>
+        {{ if or .Params.threats .Params.industries }}
+        <div class="episode-tags">
+          {{ range .Params.threats }}
+          <span class="etag etag-threat">{{ . }}</span>
+          {{ end }}
+          {{ range .Params.industries }}
+          <span class="etag etag-industry">{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ end }}
         {{ with .Params.description }}
         <p class="episode-description">{{ . }}</p>
         {{ end }}

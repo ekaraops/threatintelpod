@@ -17,6 +17,8 @@ stings:
   - "The digital heist of the century"
 card_topic: "Streaming+Fraud"
 topic_count: 6
+threats: ["Account Takeover", "Botnets", "Money Laundering", "Supply Chain Hijacking"]
+industries: ["Media & Entertainment", "Finance"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

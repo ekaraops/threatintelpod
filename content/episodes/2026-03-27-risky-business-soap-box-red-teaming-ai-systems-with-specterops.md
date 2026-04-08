@@ -17,6 +17,8 @@ stings:
   - "A system of systems under siege"
 card_topic: "AI + Identity"
 topic_count: 6
+threats: ["Prompt Injection", "Indirect Prompt Injection", "Identity Attack Path", "Data Leakage"]
+industries: ["Software Development", "Cloud Computing", "Information Technology"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

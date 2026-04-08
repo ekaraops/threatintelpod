@@ -17,6 +17,8 @@ stings:
   - "Scaling security without the human bottleneck"
 card_topic: "AI+Security+Evolution"
 topic_count: 6
+threats: ["Supply Chain Attacks", "Prompt Injection", "Malicious Code"]
+industries: ["Cybersecurity", "Software Development"]
 ---
 
 # Podcast Summary: How Trail of Bits Rebuilt Around AI

@@ -17,6 +17,8 @@ stings:
   - "Beyond the binary trap"
 card_topic: "AI+Defense+Metrics"
 topic_count: 6
+threats: ["AI-Driven Attacks", "Autonomous Agents"]
+industries: ["Cybersecurity", "Information Technology"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

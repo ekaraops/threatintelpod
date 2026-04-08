@@ -17,6 +17,8 @@ stings:
   - "Biometrics found in your typing cadence"
 card_topic: "AI + Security"
 topic_count: 6
+threats: ["Dataset Poisoning", "Supply Chain Attacks", "Autonomous Agent Exploitation"]
+industries: ["Technology", "Software Development"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

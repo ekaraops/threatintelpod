@@ -17,6 +17,8 @@ stings:
   - "The death of manual defense"
 card_topic: "State-Sponsored+Crypto+Heists"
 topic_count: 6
+threats: ["Credential Theft", "Phishing", "Automated Transaction Chains", "Nation-State Attacks"]
+industries: ["Finance", "Cryptocurrency"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

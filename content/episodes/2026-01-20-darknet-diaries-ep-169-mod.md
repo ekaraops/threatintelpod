@@ -17,6 +17,8 @@ stings:
   - "The raid on a game studio"
 card_topic: "Hacker + Origins"
 topic_count: 6
+threats: ["Privileged Access Abuse", "Session Hijacking", "Phreaking", "Social Engineering"]
+industries: ["Telecommunications", "Defense", "Finance"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

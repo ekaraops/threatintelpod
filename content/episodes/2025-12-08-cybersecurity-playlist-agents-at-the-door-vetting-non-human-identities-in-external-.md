@@ -17,6 +17,8 @@ stings:
   - "Identity wars in the API layer"
 card_topic: "Agentic + IAM"
 topic_count: 6
+threats: ["Identity Theft", "Unauthorized Access", "Deepfakes", "API Exploitation"]
+industries: ["Technology", "Retail", "Finance"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

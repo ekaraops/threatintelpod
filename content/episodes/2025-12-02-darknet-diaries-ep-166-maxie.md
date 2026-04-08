@@ -17,6 +17,8 @@ stings:
   - "Crawling through sewage tunnels"
 card_topic: "Physical + Penetration"
 topic_count: 6
+threats: ["Social Engineering", "Physical Penetration", "Industrial Control System Attacks"]
+industries: ["Critical Infrastructure", "Logistics", "Data Centers"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

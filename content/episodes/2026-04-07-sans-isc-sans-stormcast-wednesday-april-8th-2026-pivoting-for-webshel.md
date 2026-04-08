@@ -17,6 +17,8 @@ stings:
   - "The AI race for zero-day dominance"
 card_topic: "Threat+Intelligence"
 topic_count: 6
+threats: ["Web Shell Scanning", "Parasitic Attacking", "Kubernetes Pod Injection", "Spearphishing"]
+industries: ["Software Development", "Cloud Computing"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

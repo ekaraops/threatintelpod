@@ -17,6 +17,8 @@ stings:
   - "The silent pivot from living room to corporate server"
 card_topic: "BadBox + IoT"
 topic_count: 6
+threats: ["Botnets", "DDoS", "ARP Spoofing", "Trojan Horse"]
+industries: ["Consumer Electronics", "Telecommunications", "Information Technology"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

@@ -17,6 +17,8 @@ stings:
   - "Shadow assets everywhere"
 card_topic: "Fintech + Resilience"
 topic_count: 6
+threats: ["Supply Chain Attacks", "AI-driven Attacks", "Insider Threats", "Cloud Outages"]
+industries: ["Fintech", "Banking"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

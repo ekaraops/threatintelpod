@@ -17,6 +17,8 @@ stings:
   - "Downtime is the real killer"
 card_topic: "AI + Resilience"
 topic_count: 6
+threats: ["Agentic AI Risk", "Identity Theft", "Ransomware", "Ghost VM Attack"]
+industries: ["Technology", "Information Technology"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

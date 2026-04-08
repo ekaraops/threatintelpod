@@ -17,6 +17,8 @@ stings:
   - "Trust nothing, verify everything"
 card_topic: "Zero + Trust + Warfare"
 topic_count: 6
+threats: ["Social Engineering", "Credential Theft", "Lateral Movement"]
+industries: ["Technology", "Finance"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

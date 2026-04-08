@@ -17,6 +17,8 @@ stings:
   - "The death of manual bug hunting"
 card_topic: "AI + Vulnerabilities"
 topic_count: 6
+threats: ["Zero-day Exploits", "Social Engineering", "Supply Chain Attack", "Malware Deployment"]
+industries: ["Software Development", "Finance", "Technology"]
 ---
 
 # Podcast Summary: Risky Business (832) - Anthropic's "Mythos" Model

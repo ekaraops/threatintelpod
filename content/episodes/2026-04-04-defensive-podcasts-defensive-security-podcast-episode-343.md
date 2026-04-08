@@ -17,6 +17,8 @@ stings:
   - "Malware hiding inside your trusted code"
 card_topic: "Identity + Integrity"
 topic_count: 6
+threats: ["Credential Theft", "Supply Chain Attack", "Session Hijacking", "Malware-as-a-Service"]
+industries: ["Software Development", "Information Technology", "Compliance"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

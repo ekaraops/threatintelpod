@@ -17,6 +17,8 @@ stings:
   - "Commercial gear outrunning militaries"
 card_topic: "AI+Cyber+Warfare"
 topic_count: 6
+threats: ["AI-Driven Vulnerability Research", "Supply Chain Circumvention", "Automated Exploitation"]
+industries: ["Defense", "Technology", "Telecommunications"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)

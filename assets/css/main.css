@@ -565,6 +565,37 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.5;
 }
 
+/* Tags row */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.ctag {
+  padding: 2px 8px;
+  font-family: var(--font-heading);
+  font-size: 0.58rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.ctag-threat {
+  background: rgba(255, 77, 106, 0.1);
+  color: var(--accent-red);
+  border: 1px solid rgba(255, 77, 106, 0.2);
+}
+
+.ctag-industry {
+  background: rgba(167, 139, 250, 0.1);
+  color: var(--accent-purple);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+}
+
 /* Fallback for episodes without stings */
 .card-fallback {
   font-size: 0.85rem;
@@ -852,6 +883,35 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 2rem;
   line-height: 1.25;
   margin-bottom: 12px;
+}
+
+.episode-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.etag {
+  padding: 4px 12px;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+}
+
+.etag-threat {
+  background: rgba(255, 77, 106, 0.12);
+  color: var(--accent-red);
+  border: 1px solid rgba(255, 77, 106, 0.25);
+}
+
+.etag-industry {
+  background: rgba(167, 139, 250, 0.12);
+  color: var(--accent-purple);
+  border: 1px solid rgba(167, 139, 250, 0.25);
 }
 
 .episode-description {

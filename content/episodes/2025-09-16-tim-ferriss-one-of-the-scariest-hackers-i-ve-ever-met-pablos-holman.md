@@ -17,6 +17,8 @@ stings:
   - "Deep tech's hidden war"
 card_topic: "Hacker+Mindset"
 topic_count: 6
+threats: ["Zero-Click Exploits", "Zero-Day Vulnerabilities", "Social Engineering"]
+industries: ["Energy", "Manufacturing", "Technology"]
 ---
 
 ## TL;DR (Too Long, Didn't Read)
