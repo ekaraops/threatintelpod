@@ -84,8 +84,9 @@
   </div>
 </section>
 
+{{ $featuredIds := .Site.Data.featured }}
 {{ $ytStats := .Site.Data.youtube_stats }}
-{{ if $ytStats }}
+{{ if $featuredIds }}
 <section class="trending-section">
   <div class="container">
     <div class="section-header">
@@ -93,39 +94,37 @@
     </div>
     <div class="trending-list">
       {{ $allEpisodes := where .Site.RegularPages "Section" "episodes" }}
-      {{ $threeMonthsAgo := now.AddDate 0 -3 0 }}
-      {{ $scored := slice }}
-      {{ range $allEpisodes }}
-        {{ if .Date.After $threeMonthsAgo }}
-          {{ $vid := .Params.video_id }}
+      {{ range $featuredId := $featuredIds }}
+        {{ range $allEpisodes }}
+          {{ if eq .Params.video_id $featuredId }}
           {{ $views := 0 }}
-          {{ with index $ytStats $vid }}{{ $views = . }}{{ end }}
-          {{ if gt $views 100 }}
-            {{ $scored = $scored | append (dict "Page" . "Views" $views) }}
+          {{ with index $ytStats .Params.video_id }}{{ $views = . }}{{ end }}
+          <a href="{{ .Permalink }}" class="trending-item">
+            <div class="trending-rank-views">
+              {{ if gt $views 0 }}
+              <span class="trending-views">{{ if ge $views 1000 }}{{ div $views 1000 }}K{{ else }}{{ $views }}{{ end }}</span>
+              <span class="trending-views-label">views</span>
+              {{ else }}
+              <span class="trending-views-label">&#x2B50;</span>
+              {{ end }}
+            </div>
+            <div class="trending-thumb">
+              {{ with .Params.thumbnail }}
+              <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+              {{ end }}
+            </div>
+            <div class="trending-info">
+              <span class="trending-channel">{{ .Params.channel }}</span>
+              <span class="trending-title">{{ .Title }}</span>
+              {{ with .Params.threats }}
+              <div class="trending-tags">
+                {{ range first 3 . }}<span class="ctag ctag-threat">{{ . }}</span>{{ end }}
+              </div>
+              {{ end }}
+            </div>
+          </a>
           {{ end }}
         {{ end }}
-      {{ end }}
-      {{ range first 5 (sort $scored "Views" "desc") }}
-      <a href="{{ .Page.Permalink }}" class="trending-item">
-        <div class="trending-rank-views">
-          <span class="trending-views">{{ if ge .Views 1000 }}{{ div .Views 1000 }}K{{ else }}{{ .Views }}{{ end }}</span>
-          <span class="trending-views-label">views</span>
-        </div>
-        <div class="trending-thumb">
-          {{ with .Page.Params.thumbnail }}
-          <img src="{{ . }}" alt="{{ $.Page.Title }}" loading="lazy">
-          {{ end }}
-        </div>
-        <div class="trending-info">
-          <span class="trending-channel">{{ .Page.Params.channel }}</span>
-          <span class="trending-title">{{ .Page.Title }}</span>
-          {{ with .Page.Params.threats }}
-          <div class="trending-tags">
-            {{ range first 3 . }}<span class="ctag ctag-threat">{{ . }}</span>{{ end }}
-          </div>
-          {{ end }}
-        </div>
-      </a>
       {{ end }}
     </div>
   </div>
