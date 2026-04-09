@@ -226,8 +226,9 @@
     "youtube_url": "https://thecyberwire.com/podcasts/hacking-humans",
     "id": "",
     "category": "stories",
-    "description": "Social engineering, phishing, and scam stories from CyberWire",
-    "tags": ["social-engineering", "phishing", "scams"]
+    "description": "Social engineering, phishing, and scam stories. Hosted by Dave Bittner, Joe Carrigan, and Maria Varmazis",
+    "tags": ["social-engineering", "phishing", "scams"],
+    "hosts": "Dave Bittner, Joe Carrigan, Maria Varmazis"
   },
   {
     "name": "Microsoft Threat Intelligence",
@@ -236,8 +237,9 @@
     "youtube_url": "https://thecyberwire.com/podcasts/microsoft-threat-intelligence",
     "id": "",
     "category": "threat-intelligence",
-    "description": "Threat landscape insights from Microsoft's security research team",
-    "tags": ["threat-intel", "microsoft", "research"]
+    "description": "Threat landscape insights from Microsoft's security research team. Hosted by Sherrod DeGrippo",
+    "tags": ["threat-intel", "microsoft", "research"],
+    "hosts": "Sherrod DeGrippo"
   },
   {
     "name": "Only Malware in the Building",
@@ -246,7 +248,8 @@
     "youtube_url": "https://thecyberwire.com/podcasts/only-malware-in-the-building",
     "id": "",
     "category": "threat-intelligence",
-    "description": "Malware analysis and threat hunting deep dives",
-    "tags": ["malware", "threat-hunting", "analysis"]
+    "description": "Monthly malware analysis deep dives from N2K CyberWire and Proofpoint. Hosted by Selena Larson",
+    "tags": ["malware", "threat-hunting", "analysis"],
+    "hosts": "Selena Larson"
   }
 ]

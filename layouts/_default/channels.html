@@ -17,13 +17,20 @@
         </div>
         <h3 class="channel-name">{{ .name }}</h3>
         <p class="channel-description">{{ .description }}</p>
+        {{ with .hosts }}
+        <p class="channel-hosts">Hosted by {{ . }}</p>
+        {{ end }}
         <div class="channel-tags">
           {{ range .tags }}
           <span class="channel-tag">{{ . }}</span>
           {{ end }}
         </div>
         <div class="channel-cta">
+          {{ if eq .type "podcast" }}
+          Listen to Podcast &rarr;
+          {{ else }}
           View on YouTube &rarr;
+          {{ end }}
         </div>
       </a>
       {{ end }}
