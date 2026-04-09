@@ -28,7 +28,7 @@
         {{ end }}
         {{ with .Params.youtube_url }}
         <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-youtube">
-          &#x25b6; Watch Original Episode
+          {{ if hasPrefix . "https://www.youtube.com" }}&#x25b6; Watch Original Episode{{ else }}&#x1f3a7; Listen to Episode{{ end }}
         </a>
         {{ end }}
       </div>
