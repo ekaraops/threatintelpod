@@ -218,5 +218,35 @@
     "category": "stories",
     "description": "True cybercrime stories and hacking investigations",
     "tags": ["stories", "cybercrime", "investigations"]
+  },
+  {
+    "name": "Hacking Humans",
+    "slug": "hacking-humans",
+    "type": "podcast",
+    "youtube_url": "https://thecyberwire.com/podcasts/hacking-humans",
+    "id": "",
+    "category": "stories",
+    "description": "Social engineering, phishing, and scam stories from CyberWire",
+    "tags": ["social-engineering", "phishing", "scams"]
+  },
+  {
+    "name": "Microsoft Threat Intelligence",
+    "slug": "microsoft-threat-intel",
+    "type": "podcast",
+    "youtube_url": "https://thecyberwire.com/podcasts/microsoft-threat-intelligence",
+    "id": "",
+    "category": "threat-intelligence",
+    "description": "Threat landscape insights from Microsoft's security research team",
+    "tags": ["threat-intel", "microsoft", "research"]
+  },
+  {
+    "name": "Only Malware in the Building",
+    "slug": "only-malware",
+    "type": "podcast",
+    "youtube_url": "https://thecyberwire.com/podcasts/only-malware-in-the-building",
+    "id": "",
+    "category": "threat-intelligence",
+    "description": "Malware analysis and threat hunting deep dives",
+    "tags": ["malware", "threat-hunting", "analysis"]
   }
 ]
