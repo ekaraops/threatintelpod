@@ -2,7 +2,7 @@
 title: "Agents at the Door: Vetting Non-Human Identities in External IAM - Rakesh Soni - CSP #219"
 date: 2025-12-08T17:01:21.000Z
 draft: false
-channel: "Cybersecurity Playlist"
+channel: "CISO Series"
 channel_slug: "cybersecurity-playlist"
 category: "mixed"
 youtube_url: "https://www.youtube.com/watch?v=m8gqtiVd1z4"

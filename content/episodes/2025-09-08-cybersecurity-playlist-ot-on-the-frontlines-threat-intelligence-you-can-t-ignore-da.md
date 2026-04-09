@@ -2,7 +2,7 @@
 title: "OT on the Frontlines: Threat Intelligence You Can’t Ignore - Dawn Cappelli - CSP #216"
 date: 2025-09-08T16:00:35.000Z
 draft: false
-channel: "Cybersecurity Playlist"
+channel: "CISO Series"
 channel_slug: "cybersecurity-playlist"
 category: "mixed"
 youtube_url: "https://www.youtube.com/watch?v=IhAFrh-kYaM"
