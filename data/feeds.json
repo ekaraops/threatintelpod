@@ -220,6 +220,26 @@
     "tags": ["stories", "cybercrime", "investigations"]
   },
   {
+    "name": "DEF CON",
+    "slug": "defcon",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@DEFCONConference",
+    "id": "UC6Om9kAkl32dWlDSNlDS9Iw",
+    "category": "conferences",
+    "description": "The world's largest hacking conference. Talks, demos, and villages",
+    "tags": ["conference", "hacking", "research"]
+  },
+  {
+    "name": "Black Hat",
+    "slug": "blackhat",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@BlackHatOfficialYT",
+    "id": "UCJ6q9Ie29ajGqKApbLqfBOg",
+    "category": "conferences",
+    "description": "Technical security conference. Briefings, trainings, and Arsenal demos",
+    "tags": ["conference", "briefings", "research"]
+  },
+  {
     "name": "Hacking Humans",
     "slug": "hacking-humans",
     "type": "podcast",
