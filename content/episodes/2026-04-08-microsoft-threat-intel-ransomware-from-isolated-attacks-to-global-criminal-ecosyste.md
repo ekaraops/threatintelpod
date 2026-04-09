@@ -7,7 +7,7 @@ channel_slug: "microsoft-threat-intel"
 category: "threat-intelligence"
 youtube_url: "https://traffic.megaphone.fm/CYBW8134820231.mp3"
 video_id: "pod-microsoft-threat-intel-ransomware-from-isolated-attac"
-thumbnail: "https://i.ytimg.com/vi/pod-microsoft-threat-intel-ransomware-from-isolated-attac/sddefault.jpg"
+thumbnail: "https://megaphone.imgix.net/podcasts/c0568ca6-62ea-11ee-b167-6f56d7192a78/image/MTI_Podcast_3000x3000_JPG.jpg?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress"
 description: "AI-generated summary of Ransomware: From Isolated Attacks to Global Criminal Ecosystem from Microsoft Threat Intelligence"
 tags: ["threat-intelligence"]
 hook: "The digital mafia has arrived, and they are killing people in real time."
@@ -19,7 +19,7 @@ card_topic: "Ransomware+Ecosystem"
 topic_count: 6
 threats: ["Ransomware","AI-generated malware","Vishing","Hypervisor exploitation"]
 industries: ["Healthcare","Critical Infrastructure"]
-speakers: ""
+speakers: "Sherrod DeGrippo"
 ---
 
 ## TL;DR (Too Long, Didn't Read)

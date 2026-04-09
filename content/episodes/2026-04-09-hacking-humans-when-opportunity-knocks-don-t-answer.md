@@ -7,7 +7,7 @@ channel_slug: "hacking-humans"
 category: "stories"
 youtube_url: "https://pdst.fm/e/pdrl.fm/7d51b0/traffic.megaphone.fm/CYBW9589328900.mp3?updated=1775675871"
 video_id: "pod-hacking-humans-when-opportunity-knocks-don-t-"
-thumbnail: "https://i.ytimg.com/vi/pod-hacking-humans-when-opportunity-knocks-don-t-/sddefault.jpg"
+thumbnail: "https://megaphone.imgix.net/podcasts/8797f03a-a50b-11ea-b6c0-87ebb093948d/image/hacking-humans-cover-art-cw.png?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress"
 description: "AI-generated summary of When “opportunity” knocks, don’t answer. from Hacking Humans"
 tags: ["stories"]
 hook: "Your most trusted platforms are being weaponized to bleed you dry."
@@ -19,7 +19,7 @@ card_topic: "Social + Engineering"
 topic_count: 6
 threats: ["Phishing","RMM Abuse","Social Engineering","Lookalike Domains"]
 industries: ["Finance","Travel","Technology"]
-speakers: ""
+speakers: "Dave Bittner, Joe Carrigan, Maria Varmazis"
 ---
 
 ## TL;DR (Too Long, Didn't Read)
