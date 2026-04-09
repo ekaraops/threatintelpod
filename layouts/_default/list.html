@@ -11,6 +11,21 @@
 {{ if eq .Section "episodes" }}
 <section class="filter-bar">
   <div class="container">
+    <div class="filter-group filter-group-primary">
+      <span class="filter-label">Source</span>
+      <div class="filter-tags" data-filter-type="channel">
+        <button class="filter-btn filter-btn-channel active" data-filter="all">All Sources</button>
+        {{ $channels := slice }}
+        {{ range (where .Site.RegularPages "Section" "episodes") }}
+          {{ with .Params.channel }}
+            {{ $channels = $channels | append . }}
+          {{ end }}
+        {{ end }}
+        {{ range (uniq $channels) }}
+        <button class="filter-btn filter-btn-channel" data-filter="{{ . }}">{{ . }}</button>
+        {{ end }}
+      </div>
+    </div>
     <div class="filter-group">
       <span class="filter-label">Threats</span>
       <div class="filter-tags" data-filter-type="threat">
@@ -59,21 +74,6 @@
         {{ end }}
         {{ range (uniq $geos) }}
         <button class="filter-btn filter-btn-geo" data-filter="{{ . }}">{{ . }}</button>
-        {{ end }}
-      </div>
-    </div>
-    <div class="filter-group">
-      <span class="filter-label">Channel</span>
-      <div class="filter-tags" data-filter-type="channel">
-        <button class="filter-btn filter-btn-channel active" data-filter="all">All</button>
-        {{ $channels := slice }}
-        {{ range (where .Site.RegularPages "Section" "episodes") }}
-          {{ with .Params.channel }}
-            {{ $channels = $channels | append . }}
-          {{ end }}
-        {{ end }}
-        {{ range (uniq $channels) }}
-        <button class="filter-btn filter-btn-channel" data-filter="{{ . }}">{{ . }}</button>
         {{ end }}
       </div>
     </div>

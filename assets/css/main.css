@@ -1202,6 +1202,24 @@ h1, h2, h3, h4, h5, h6 {
   gap: 10px;
 }
 
+.filter-group-primary {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filter-group-primary .filter-btn {
+  padding: 6px 14px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.filter-group-primary .filter-btn-channel.active {
+  background: var(--accent-green);
+  border-color: var(--accent-green);
+  color: var(--bg-primary);
+}
+
 .filter-label {
   font-family: var(--font-heading);
   font-size: 0.65rem;
