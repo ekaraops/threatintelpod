@@ -108,5 +108,115 @@
     "category": "leadership",
     "description": "CISO-focused discussions on security leadership, risk, and strategy",
     "tags": ["ciso", "leadership", "strategy"]
+  },
+  {
+    "name": "SANS Institute",
+    "slug": "sans-institute",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@SANSInstitute",
+    "id": "UC2uPNhGken-ogEpJDi4ly6w",
+    "category": "education",
+    "description": "Cybersecurity training, research, and certification from SANS",
+    "tags": ["training", "research", "education"]
+  },
+  {
+    "name": "Intel 471",
+    "slug": "intel-471",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@intel471_Inc",
+    "id": "UCIL4ElcM6oLd3n36hM4_wkg",
+    "category": "threat-intelligence",
+    "description": "Cyber threat intelligence on adversaries, malware, and vulnerabilities",
+    "tags": ["threat-intel", "adversaries", "malware"]
+  },
+  {
+    "name": "CrowdStrike",
+    "slug": "crowdstrike",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@CrowdStrike",
+    "id": "UCsRdY9CtEVWTNO4ulwfzqVA",
+    "category": "threat-intelligence",
+    "description": "Endpoint protection, threat hunting, and incident response insights",
+    "tags": ["edr", "threat-hunting", "incident-response"]
+  },
+  {
+    "name": "Palo Alto Networks Unit 42",
+    "slug": "unit42",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@PaloAltoNetworksUnit42",
+    "id": "UCvJQO11qoCHYwZ4Ah4Jf-Tw",
+    "category": "threat-intelligence",
+    "description": "Threat research and malware analysis from Palo Alto Networks Unit 42",
+    "tags": ["threat-research", "malware", "analysis"]
+  },
+  {
+    "name": "Mandiant",
+    "slug": "mandiant",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@Mandiant",
+    "id": "UCexu0DP7VKdDByusuTA53FQ",
+    "category": "threat-intelligence",
+    "description": "Incident response, threat intelligence, and security consulting",
+    "tags": ["incident-response", "apt", "threat-intel"]
+  },
+  {
+    "name": "CISO Tradecraft",
+    "slug": "ciso-tradecraft",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@cisotradecraft",
+    "id": "UCrCV8M_HEjR-8aBsOeNBDXQ",
+    "category": "leadership",
+    "description": "Practical CISO skills, leadership tactics, and security program management",
+    "tags": ["ciso", "leadership", "management"]
+  },
+  {
+    "name": "AI Security Podcast",
+    "slug": "ai-security-podcast",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@AISecurityPodcast",
+    "id": "UCuWq8fmaomKtuvnyb_m0zLQ",
+    "category": "ai-security",
+    "description": "AI and machine learning security risks, defenses, and research",
+    "tags": ["ai", "ml-security", "research"]
+  },
+  {
+    "name": "Hacker Valley Media",
+    "slug": "hacker-valley",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@HackerValleyMedia",
+    "id": "UC-JXhtTw4scg74yWwkuX-ow",
+    "category": "interviews",
+    "description": "Cybersecurity career stories, interviews, and community discussions",
+    "tags": ["interviews", "careers", "community"]
+  },
+  {
+    "name": "The DFIR Report",
+    "slug": "dfir-report",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@TheDFIRReport",
+    "id": "UC6R2MPMkkCqFxvAdQAI_23A",
+    "category": "threat-intelligence",
+    "description": "Real intrusion analysis and digital forensics case studies",
+    "tags": ["dfir", "forensics", "intrusion-analysis"]
+  },
+  {
+    "name": "FS-ISAC",
+    "slug": "fs-isac",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@fs-isac733",
+    "id": "UCmoOvU4ZhbBIkw5QZ2jgGCQ",
+    "category": "news",
+    "description": "Financial sector cybersecurity intelligence sharing and analysis",
+    "tags": ["finance", "isac", "intelligence-sharing"]
+  },
+  {
+    "name": "Hacked",
+    "slug": "hacked",
+    "type": "channel",
+    "youtube_url": "https://www.youtube.com/@hackedpodcast",
+    "id": "UCAK7m6PYjsffzG5Wn5RVO4g",
+    "category": "stories",
+    "description": "True cybercrime stories and hacking investigations",
+    "tags": ["stories", "cybercrime", "investigations"]
   }
 ]
