@@ -7,7 +7,7 @@ channel_slug: "risky-business"
 category: "news"
 youtube_url: "https://www.youtube.com/watch?v=uGrru0FP85I"
 video_id: "uGrru0FP85I"
-thumbnail: thumbnail: "https://i.ytimg.com/vi/uGrru0FP85I/sddefault.jpg"
+thumbnail: "https://i.ytimg.com/vi/uGrru0FP85I/sddefault.jpg"
 description: "AI-generated summary of Snake Oilers: Burp AI, Sondera and Truffle Security from Risky Business"
 tags: ["news"]
 hook: "The era of the autonomous attacker has arrived, and your AI agents are already leaking your keys."
